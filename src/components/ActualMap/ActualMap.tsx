@@ -19,7 +19,7 @@ interface ActualMapProps {
   };
 }
 
-// 서울어린이대공원 시설 좌표 데이터 (임시)
+// 서울어린이대공원 시설 좌표 데이터
 const facilityData: MarkerData[] = [
   // 주요 시설
   { id: 'main-gate', name: '정문', category: 'facility', lat: 37.5481, lng: 127.0811, icon: '🚪' },
@@ -43,10 +43,11 @@ const facilityData: MarkerData[] = [
   { id: 'playground', name: '어린이 놀이터', category: 'park', lat: 37.5480, lng: 127.0845, icon: '🎠' },
 ];
 
-// Kakao Map API 타입 선언
+// Google Maps API 타입 선언
 declare global {
   interface Window {
-    kakao: any;
+    google: any;
+    initMap?: () => void;
   }
 }
 
@@ -56,48 +57,46 @@ const ActualMap: React.FC<ActualMapProps> = ({ filters }) => {
   const markersRef = useRef<any[]>([]);
   const infoWindowRef = useRef<any>(null);
 
-  // 카카오 맵 초기화
+  // 구글 맵 초기화
   useEffect(() => {
     const initMap = () => {
-      if (!mapRef.current || !window.kakao || !window.kakao.maps) {
-        console.error('Kakao Maps API not loaded');
+      if (!mapRef.current || !window.google) {
+        console.error('Google Maps API not loaded');
         return;
       }
 
-      const container = mapRef.current;
-
       // 서울어린이대공원 중심 좌표
-      const center = new window.kakao.maps.LatLng(37.5490, 127.0825);
-
-      const options = {
-        center: center,
-        level: 4, // 확대 레벨 (숫자가 작을수록 확대)
-      };
+      const center = { lat: 37.5490, lng: 127.0825 };
 
       // 지도 생성
-      const map = new window.kakao.maps.Map(container, options);
+      const map = new window.google.maps.Map(mapRef.current, {
+        center: center,
+        zoom: 16,
+        mapTypeControl: true,
+        streetViewControl: false,
+        fullscreenControl: true,
+      });
+
       mapInstanceRef.current = map;
 
       // InfoWindow 생성
-      infoWindowRef.current = new window.kakao.maps.InfoWindow({
-        removable: true,
-      });
+      infoWindowRef.current = new window.google.maps.InfoWindow();
 
       // 마커 추가
       addMarkers(map);
     };
 
-    // Kakao Maps API 로드 확인
-    if (window.kakao && window.kakao.maps) {
-      window.kakao.maps.load(initMap);
+    // Google Maps API 로드 확인
+    if (window.google && window.google.maps) {
+      initMap();
     } else {
       // API 스크립트 로드
       const script = document.createElement('script');
-      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${import.meta.env.VITE_KAKAO_MAP_API_KEY}&autoload=false`;
+      const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
       script.async = true;
-      script.onload = () => {
-        window.kakao.maps.load(initMap);
-      };
+      script.defer = true;
+      script.onload = initMap;
       document.head.appendChild(script);
     }
   }, []);
@@ -105,27 +104,26 @@ const ActualMap: React.FC<ActualMapProps> = ({ filters }) => {
   // 마커 추가 함수
   const addMarkers = (map: any) => {
     // 기존 마커 제거
-    markersRef.current.forEach((marker) => marker.setMap(null));
+    markersRef.current.forEach(({ marker }) => marker.setMap(null));
     markersRef.current = [];
 
     facilityData.forEach((facility) => {
-      const position = new window.kakao.maps.LatLng(facility.lat, facility.lng);
-
       // 마커 생성
-      const marker = new window.kakao.maps.Marker({
-        position: position,
+      const marker = new window.google.maps.Marker({
+        position: { lat: facility.lat, lng: facility.lng },
         map: map,
         title: facility.name,
+        animation: window.google.maps.Animation.DROP,
       });
 
       // 마커 클릭 이벤트
-      window.kakao.maps.event.addListener(marker, 'click', () => {
+      marker.addListener('click', () => {
         const content = `
-          <div style="padding: 10px; min-width: 150px;">
-            <div style="font-size: 24px; text-align: center; margin-bottom: 5px;">
+          <div style="padding: 12px; min-width: 180px;">
+            <div style="font-size: 28px; text-align: center; margin-bottom: 8px;">
               ${facility.icon}
             </div>
-            <div style="font-weight: bold; font-size: 16px; text-align: center; color: #3A45AD;">
+            <div style="font-weight: bold; font-size: 18px; text-align: center; color: #3A45AD; margin-bottom: 4px;">
               ${facility.name}
             </div>
           </div>
