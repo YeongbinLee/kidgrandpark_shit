@@ -122,6 +122,19 @@
   border: 2px solid #3A45AD;
 }
 
+.dayCell.selected {
+  background: #3A45AD;
+  transform: scale(1.1);
+}
+
+.dayCell.selected .dayNumber {
+  color: white;
+}
+
+.dayCell.selected .eventDot {
+  background: white;
+}
+
 .dayNumber {
   font-size: 20px;
   font-weight: 700;
@@ -142,18 +155,57 @@
   gap: 20px;
 }
 
-.upcomingEvents {
+.eventDetails {
   background: white;
   padding: 32px;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eventHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.closeButton {
+  background: #F0F0F0;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.closeButton:hover {
+  background: #E0E0E0;
+  transform: rotate(90deg);
 }
 
 .eventsTitle {
   font-size: 24px;
   font-weight: 700;
   color: #333;
-  margin-bottom: 24px;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -166,36 +218,51 @@
 }
 
 .eventCard {
-  padding: 20px;
+  padding: 24px;
   background: #F8F9FF;
   border-radius: 16px;
-  border-left: 5px solid #3A45AD;
   transition: all 0.3s ease;
-  cursor: pointer;
+  border: 2px solid transparent;
 }
 
 .eventCard:hover {
   background: #EEF1FF;
-  transform: translateX(5px);
-}
-
-.eventDate {
-  font-size: 16px;
-  color: #999;
-  margin-bottom: 8px;
+  border-color: #3A45AD;
+  transform: translateY(-2px);
 }
 
 .eventName {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  color: #333;
-  margin-bottom: 8px;
+  color: #3A45AD;
+  margin-bottom: 16px;
+}
+
+.eventInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.eventInfoItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #666;
+}
+
+.infoIcon {
+  font-size: 18px;
 }
 
 .eventDescription {
-  font-size: 18px;
+  font-size: 16px;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.8;
+  padding-top: 16px;
+  border-top: 1px solid #E0E0E0;
 }
 
 /* 반응형 */
