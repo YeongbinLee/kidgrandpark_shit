@@ -10,6 +10,7 @@ interface FAQ {
 
 const SupportPage: React.FC = () => {
   const [openFaqId, setOpenFaqId] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const toggleFaq = (id: number) => {
     setOpenFaqId(openFaqId === id ? null : id);
@@ -66,12 +67,35 @@ const SupportPage: React.FC = () => {
     },
   ];
 
+  const filteredFaqs = searchQuery
+    ? faqs.filter(
+        (faq) =>
+          faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : faqs;
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>고객센터</h1>
       <p className={styles.subtitle}>
         궁금하신 사항이 있으시면 언제든지 문의해 주세요
       </p>
+
+      {/* 검색 섹션 */}
+      <div className={styles.searchSection}>
+        <div className={styles.totalCount}>총 {filteredFaqs.length}건의 FAQ</div>
+        <div className={styles.searchBox}>
+          <input
+            type="text"
+            className={styles.searchInput}
+            placeholder="검색어를 입력해주세요."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button className={styles.searchButton}>🔍</button>
+        </div>
+      </div>
 
       <div className={styles.content}>
         <div className={styles.contactSection}>
@@ -104,7 +128,7 @@ const SupportPage: React.FC = () => {
             자주 묻는 질문
           </h2>
           <div className={styles.faqList}>
-            {faqs.map((faq) => (
+            {filteredFaqs.map((faq) => (
               <div
                 key={faq.id}
                 className={`${styles.faqItem} ${

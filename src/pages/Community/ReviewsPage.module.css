@@ -27,7 +27,59 @@
   display: flex;
   justify-content: center;
   gap: 32px;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
+}
+
+/* Review Header (총 후기 수와 검색) */
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.reviewCount {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.reviewSearchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reviewSearchInput {
+  width: 300px;
+  padding: 12px 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.reviewSearchInput:focus {
+  outline: none;
+  border-color: #3A45AD;
+}
+
+.reviewSearchInput::placeholder {
+  color: #999;
+}
+
+.reviewSearchButton {
+  padding: 12px 16px;
+  background: #3A45AD;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 16px;
+}
+
+.reviewSearchButton:hover {
+  background: #2E3795;
 }
 
 .statCard {
@@ -79,6 +131,151 @@
   }
 }
 
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 24px;
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalClose {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.modalClose:hover {
+  background: #F5F5F5;
+  transform: rotate(90deg);
+}
+
+.modalLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+  max-height: 90vh;
+}
+
+.modalLeft {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #F8F9FF;
+  overflow-y: auto;
+}
+
+.modalTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modalRating {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.modalDescription {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.8;
+  flex: 1;
+  margin-bottom: 32px;
+}
+
+.modalFooter {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid #E0E0E0;
+}
+
+.modalAuthor {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.modalAuthorAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #3A45AD;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.modalAuthorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modalAuthorName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.modalDate {
+  font-size: 14px;
+  color: #999;
+}
+
+.modalRight {
+  position: relative;
+  overflow: hidden;
+}
+
+.modalRight img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* 반응형 - 태블릿 */
 @media (max-width: 1024px) {
   .container {
@@ -118,6 +315,21 @@
     margin-bottom: 40px;
   }
 
+  .reviewHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .reviewSearchInput {
+    width: 100%;
+  }
+
+  .reviewSearchBox {
+    width: 100%;
+  }
+
   .statsContainer {
     flex-direction: column;
     gap: 16px;
@@ -139,5 +351,50 @@
   .reviewGrid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .modalContent {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+
+  .modalLayout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .modalLeft {
+    padding: 32px 24px 24px;
+    max-height: 60vh;
+  }
+
+  .modalRight {
+    height: 300px;
+  }
+
+  .modalTitle {
+    font-size: 22px;
+  }
+
+  .modalRating {
+    font-size: 20px;
+  }
+
+  .modalDescription {
+    font-size: 15px;
+  }
+
+  .modalAuthorAvatar {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .modalAuthorName {
+    font-size: 15px;
+  }
+
+  .modalDate {
+    font-size: 13px;
   }
 }

@@ -11,6 +11,7 @@
   color: #3A45AD;
   margin-bottom: 16px;
   line-height: 1.3;
+  text-align: center;
 }
 
 .subtitle {
@@ -18,6 +19,7 @@
   color: #666;
   margin-bottom: 40px;
   line-height: 1.6;
+  text-align: center;
 }
 
 .searchSection {

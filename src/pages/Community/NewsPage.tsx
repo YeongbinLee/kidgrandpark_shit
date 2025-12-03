@@ -107,11 +107,7 @@ const NewsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>
-        대공원의 새로운 소식,
-        <br />
-        놓치지 말고 확인하세요
-      </h1>
+      <h1 className={styles.title}>대공원 소식</h1>
       <p className={styles.subtitle}>
         서울어린이대공원의 최신 소식과 이벤트를 전해드립니다. 방문 전 확인하시면 더욱 알찬 하루를 보내실 수 있어요.
       </p>

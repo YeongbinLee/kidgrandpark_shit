@@ -22,7 +22,8 @@
 
 .coursesGrid {
   display: grid;
-  gap: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
 .courseCard {
@@ -208,6 +209,10 @@
 
   .subtitle {
     font-size: 16px;
+  }
+
+  .coursesGrid {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -14,6 +14,7 @@ interface Event {
 const CalendarPage: React.FC = () => {
   const [currentMonth] = useState('2025년 12월');
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const events: Event[] = [
     {
@@ -63,6 +64,15 @@ const CalendarPage: React.FC = () => {
     },
   ];
 
+  const filteredEvents = searchQuery
+    ? events.filter(
+        (event) =>
+          event.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          event.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          event.location.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : events;
+
   // 12월 달력 생성 (2025년 12월 1일은 월요일)
   const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
   const firstDayOfMonth = 1; // 월요일 (0=일요일, 1=월요일)
@@ -86,7 +96,7 @@ const CalendarPage: React.FC = () => {
   }
 
   const selectedDayEvents = selectedDay
-    ? events.filter((event) => event.day === selectedDay)
+    ? filteredEvents.filter((event) => event.day === selectedDay)
     : [];
 
   const handleDayClick = (day: number | null) => {
@@ -103,6 +113,21 @@ const CalendarPage: React.FC = () => {
           ? `${currentMonth} ${selectedDay}일의 이벤트`
           : '날짜를 클릭하여 이벤트를 확인하세요'}
       </p>
+
+      {/* 검색 섹션 */}
+      <div className={styles.searchSection}>
+        <div className={styles.totalCount}>총 {filteredEvents.length}건의 이벤트</div>
+        <div className={styles.searchBox}>
+          <input
+            type="text"
+            className={styles.searchInput}
+            placeholder="검색어를 입력해주세요."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button className={styles.searchButton}>🔍</button>
+        </div>
+      </div>
 
       <div className={styles.content}>
         <div className={styles.calendarSection}>

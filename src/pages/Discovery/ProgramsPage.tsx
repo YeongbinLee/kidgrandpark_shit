@@ -19,7 +19,7 @@ const ProgramsPage: React.FC = () => {
     {
       id: 1,
       name: '동물 사육사 체험',
-      icon: '🦁',
+      icon: '/animals/lion_1.jpg',
       description: '사육사와 함께 동물들의 먹이를 준비하고, 동물들을 가까이서 관찰하며 사육사의 하루를 체험해보는 프로그램입니다.',
       target: '초등학생 (3-6학년)',
       schedule: '매주 토요일',
@@ -31,7 +31,7 @@ const ProgramsPage: React.FC = () => {
     {
       id: 2,
       name: '식물 탐험가',
-      icon: '🌿',
+      icon: '/garden/Dracaena_1.webp',
       description: '식물 전문가와 함께 정원을 탐험하며 다양한 식물의 특징을 배우고, 나만의 작은 화분을 만들어보는 프로그램입니다.',
       target: '가족 (어린이 포함)',
       schedule: '매주 일요일',
@@ -43,7 +43,7 @@ const ProgramsPage: React.FC = () => {
     {
       id: 3,
       name: '자연 관찰 교실',
-      icon: '🔍',
+      icon: '/animals/eagle_1.webp',
       description: '돋보기와 망원경을 이용해 공원의 자연을 세밀하게 관찰하고 기록하는 과학 탐구 프로그램입니다.',
       target: '초등학생 (전체)',
       schedule: '매주 수요일',
@@ -55,7 +55,7 @@ const ProgramsPage: React.FC = () => {
     {
       id: 4,
       name: '어린이 생태 캠프',
-      icon: '⛺',
+      icon: '/garden/lake_1.jpg',
       description: '1박 2일 동안 공원에서 캠핑하며 자연과 함께하는 특별한 경험을 하는 프로그램입니다.',
       target: '초등학생 (4-6학년)',
       schedule: '매월 마지막 주 금-토',
@@ -67,7 +67,7 @@ const ProgramsPage: React.FC = () => {
     {
       id: 5,
       name: '사진으로 담는 자연',
-      icon: '📷',
+      icon: '/garden/close-up-pink-roses.jpg',
       description: '전문 사진작가와 함께 공원의 아름다운 순간을 사진으로 담는 법을 배우는 프로그램입니다.',
       target: '청소년 이상',
       schedule: '격주 토요일',
@@ -89,7 +89,9 @@ const ProgramsPage: React.FC = () => {
         {programs.map((program) => (
           <div key={program.id} className={styles.programCard}>
             <div className={styles.programHeader}>
-              <div className={styles.programIcon}>{program.icon}</div>
+              <div className={styles.programIcon}>
+                <img src={program.icon} alt={program.name} />
+              </div>
               <div className={styles.programInfo}>
                 <div className={styles.programTitleRow}>
                   <h3 className={styles.programName}>{program.name}</h3>

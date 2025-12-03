@@ -22,6 +22,7 @@
 
 .programsGrid {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
@@ -49,7 +50,6 @@
 }
 
 .programIcon {
-  font-size: 60px;
   min-width: 80px;
   height: 80px;
   background: linear-gradient(135deg, #E8EEFF 0%, #F5F7FF 100%);
@@ -57,6 +57,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.programIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .programInfo {
@@ -157,6 +164,12 @@
 }
 
 /* 반응형 */
+@media (max-width: 1024px) {
+  .programsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 100px 20px 60px;

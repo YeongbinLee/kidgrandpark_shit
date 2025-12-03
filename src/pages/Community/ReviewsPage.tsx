@@ -80,11 +80,22 @@ const generateReviews = (): ReviewData[] => {
 
 const ReviewsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedReview, setSelectedReview] = useState<ReviewData | null>(null);
   const reviewsPerPage = 12; // 페이지당 12개
   const allReviews = useMemo(() => generateReviews(), []);
 
+  // 검색 필터링
+  const filteredReviews = useMemo(() => {
+    if (!searchQuery) return allReviews;
+    return allReviews.filter(review =>
+      review.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      review.authorId.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [allReviews, searchQuery]);
+
   // 총 페이지 수 계산
-  const totalPages = Math.ceil(allReviews.length / reviewsPerPage);
+  const totalPages = Math.ceil(filteredReviews.length / reviewsPerPage);
 
   // 현재 페이지의 리뷰만 필터링
   const currentReviews = useMemo(() => {
@@ -129,10 +140,30 @@ const ReviewsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* 총 후기 수와 검색 */}
+      <div className={styles.reviewHeader}>
+        <div className={styles.reviewCount}>총 {filteredReviews.length}건</div>
+        <div className={styles.reviewSearchBox}>
+          <input
+            type="text"
+            className={styles.reviewSearchInput}
+            placeholder="검색어를 입력해주세요."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
+          />
+          <button className={styles.reviewSearchButton}>🔍</button>
+        </div>
+      </div>
+
       {/* 리뷰 카드 그리드 (가로 3개, 세로 4개 = 12개) */}
       <div className={styles.reviewGrid}>
         {currentReviews.map((review) => (
-          <ReviewCard key={review.id} review={review} />
+          <div key={review.id} onClick={() => setSelectedReview(review)} style={{ cursor: 'pointer' }}>
+            <ReviewCard review={review} />
+          </div>
         ))}
       </div>
 
@@ -142,6 +173,53 @@ const ReviewsPage: React.FC = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+
+      {/* 리뷰 상세 모달 */}
+      {selectedReview && (
+        <div className={styles.modalOverlay} onClick={() => setSelectedReview(null)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.modalClose} onClick={() => setSelectedReview(null)}>
+              ✕
+            </button>
+
+            <div className={styles.modalLayout}>
+              {/* 좌측 컨텐츠 */}
+              <div className={styles.modalLeft}>
+                <h2 className={styles.modalTitle}>{selectedReview.summary}</h2>
+
+                <div className={styles.modalRating}>
+                  {'⭐'.repeat(selectedReview.rating)}
+                </div>
+
+                <p className={styles.modalDescription}>
+                  서울어린이대공원을 방문한 후기입니다. 아이들과 함께 즐거운 시간을 보낼 수 있었고,
+                  다양한 동물들과 놀이시설이 잘 갖춰져 있어서 만족스러웠습니다.
+                  특히 날씨가 좋아서 산책하기에도 정말 좋았어요.
+                  가족 단위로 방문하시면 하루 종일 즐길 수 있는 곳입니다.
+                  다음에 또 방문하고 싶습니다!
+                </p>
+
+                <div className={styles.modalFooter}>
+                  <div className={styles.modalAuthor}>
+                    <div className={styles.modalAuthorAvatar}>
+                      {selectedReview.authorId.charAt(0).toUpperCase()}
+                    </div>
+                    <div className={styles.modalAuthorInfo}>
+                      <div className={styles.modalAuthorName}>{selectedReview.authorId}</div>
+                      <div className={styles.modalDate}>{selectedReview.date}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 우측 이미지 */}
+              <div className={styles.modalRight}>
+                <img src={selectedReview.imageSrc} alt="리뷰 이미지" />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

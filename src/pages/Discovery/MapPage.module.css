@@ -22,40 +22,48 @@
 
 .mapContainer {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 400px 1fr;
   gap: 30px;
-  min-height: 700px;
+  min-height: 800px;
+}
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 800px;
+  overflow-y: auto;
 }
 
 .filterSection {
   background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  height: fit-content;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
 }
 
 .filterTitle {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   color: #333;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
   border-bottom: 2px solid #E0E0E0;
 }
 
 .filterList {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .filterItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 6px;
   transition: background 0.3s ease;
   cursor: pointer;
 }
@@ -65,22 +73,121 @@
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   accent-color: #3A45AD;
   cursor: pointer;
 }
 
 .filterLabel {
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 700;
   color: #333;
   cursor: pointer;
   user-select: none;
 }
 
-.filterIcon {
-  font-size: 24px;
-  margin-right: 5px;
+/* Facilities Section */
+.facilitiesSection {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.facilitiesTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.facilitiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.facilityCard {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #F8F9FF;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.facilityCard:hover {
+  background: #EEF1FF;
+  border-color: #3A45AD;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58, 69, 173, 0.15);
+}
+
+.facilityCard.selected {
+  background: #E8EEFF;
+  border-color: #3A45AD;
+}
+
+.facilityIcon {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.facilityIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.facilityInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.facilityName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.facilityDescription {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.facilityLocation {
+  font-size: 13px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.locationIcon {
+  font-size: 14px;
 }
 
 .mapSection {
@@ -89,6 +196,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   position: relative;
+  height: 800px;
 }
 
 .mapPlaceholder {
@@ -124,6 +232,11 @@
     grid-template-columns: 1fr;
   }
 
+  .leftPanel {
+    height: auto;
+    max-height: 400px;
+  }
+
   .filterSection {
     max-width: 100%;
   }
@@ -131,6 +244,10 @@
   .filterList {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  .mapSection {
+    height: 500px;
   }
 }
 
