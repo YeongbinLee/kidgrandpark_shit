@@ -131,7 +131,7 @@ const CalendarPage: React.FC = () => {
                 className={`${styles.dayCell} ${
                   item.day === null ? styles.empty : ''
                 } ${item.hasEvent ? styles.hasEvent : ''} ${
-                  selectedDay === item.day ? styles.selected : ''
+                  selectedDay !== null && selectedDay === item.day ? styles.selected : ''
                 }`}
                 onClick={() => handleDayClick(item.day)}
                 style={{ cursor: item.hasEvent ? 'pointer' : 'default' }}
