@@ -93,6 +93,8 @@ const ActualMap: React.FC<ActualMapProps> = ({ filters }) => {
       // API 스크립트 로드
       const script = document.createElement('script');
       const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+      console.log('Google Maps API Key:', apiKey);
+      console.log('All env vars:', import.meta.env);
       script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
       script.async = true;
       script.defer = true;
