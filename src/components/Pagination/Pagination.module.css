@@ -1,0 +1,85 @@
+/* Pagination Container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 60px;
+  padding: 20px 0;
+}
+
+/* Page Numbers Container */
+.pageNumbers {
+  display: flex;
+  gap: 8px;
+}
+
+/* Page Button (공통) */
+.pageButton {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 16px;
+  border: 2px solid #E0E0E0;
+  background: white;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageButton:hover:not(:disabled) {
+  border-color: #3A45AD;
+  color: #3A45AD;
+  background: #F8F9FF;
+}
+
+.pageButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Active Page */
+.pageButton.active {
+  background: #3A45AD;
+  border-color: #3A45AD;
+  color: white;
+}
+
+.pageButton.active:hover {
+  background: #2E3687;
+  border-color: #2E3687;
+}
+
+/* Arrow Buttons */
+.arrowButton {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+  .pagination {
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  .pageNumbers {
+    gap: 6px;
+  }
+
+  .pageButton {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 15px;
+  }
+
+  .arrowButton {
+    font-size: 18px;
+  }
+}

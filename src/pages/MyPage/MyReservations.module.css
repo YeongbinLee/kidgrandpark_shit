@@ -1,0 +1,270 @@
+.container {
+  animation: fadeIn 0.3s ease;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+/* Filter Tabs */
+.filterTabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.filterTab {
+  padding: 10px 20px;
+  background: #F5F5F5;
+  border: 2px solid #E0E0E0;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterTab:hover {
+  background: #E8EEFF;
+  border-color: #3A45AD;
+  color: #3A45AD;
+}
+
+.activeFilter {
+  background: #3A45AD;
+  border-color: #3A45AD;
+  color: white;
+}
+
+.activeFilter:hover {
+  background: #2d3687;
+  border-color: #2d3687;
+  color: white;
+}
+
+/* Reservation List */
+.reservationList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.emptyState p {
+  font-size: 18px;
+  color: #999;
+}
+
+/* Reservation Card */
+.reservationCard {
+  background: #F8F9FF;
+  border: 2px solid #E0E0E0;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.reservationCard:hover {
+  border-color: #3A45AD;
+  box-shadow: 0 4px 20px rgba(58, 69, 173, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.typeAndStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.type {
+  padding: 6px 14px;
+  background: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+}
+
+.statusBadge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.statusConfirmed {
+  background: #3A45AD;
+  color: white;
+}
+
+.statusCompleted {
+  background: #27ae60;
+  color: white;
+}
+
+.statusCancelled {
+  background: #e74c3c;
+  color: white;
+}
+
+.createdAt {
+  font-size: 14px;
+  color: #999;
+}
+
+.cardBody {
+  margin-bottom: 20px;
+}
+
+.reservationTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.reservationDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detailLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: #666;
+  min-width: 100px;
+}
+
+.detailValue {
+  font-size: 15px;
+  color: #333;
+}
+
+.amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: #3A45AD;
+}
+
+.cardFooter {
+  display: flex;
+  gap: 12px;
+}
+
+.detailBtn,
+.cancelBtn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.detailBtn {
+  background: white;
+  border: 2px solid #3A45AD;
+  color: #3A45AD;
+}
+
+.detailBtn:hover {
+  background: #F8F9FF;
+}
+
+.cancelBtn {
+  background: white;
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
+}
+
+.cancelBtn:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 24px;
+  }
+
+  .filterTabs {
+    gap: 8px;
+  }
+
+  .filterTab {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .reservationCard {
+    padding: 20px;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .reservationTitle {
+    font-size: 18px;
+  }
+
+  .detailItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .detailLabel {
+    min-width: auto;
+  }
+
+  .cardFooter {
+    flex-direction: column;
+  }
+
+  .detailBtn,
+  .cancelBtn {
+    width: 100%;
+  }
+}

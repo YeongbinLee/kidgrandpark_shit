@@ -1,0 +1,136 @@
+.container {
+  padding: 60px 60px 80px;
+  max-width: 700px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  background: white;
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.checkIcon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 30px;
+  background: #3A45AD;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  color: white;
+  font-weight: 700;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.message {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.infoBox {
+  background: #F8F9FF;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.infoText {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.homeBtn,
+.myPageBtn {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.homeBtn {
+  background: white;
+  border: 2px solid #3A45AD;
+  color: #3A45AD;
+}
+
+.homeBtn:hover {
+  background: #F8F9FF;
+}
+
+.myPageBtn {
+  background: #3A45AD;
+  border: none;
+  color: white;
+}
+
+.myPageBtn:hover {
+  background: #2d3687;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 69, 173, 0.3);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 20px 60px;
+  }
+
+  .content {
+    padding: 40px 24px;
+  }
+
+  .checkIcon {
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .message {
+    font-size: 16px;
+  }
+
+  .infoText {
+    font-size: 14px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .homeBtn,
+  .myPageBtn {
+    width: 100%;
+    font-size: 16px;
+  }
+}

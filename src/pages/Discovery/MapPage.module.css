@@ -1,0 +1,165 @@
+.container {
+  padding: 60px 60px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #3A45AD;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.mapContainer {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+  min-height: 700px;
+}
+
+.filterSection {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+}
+
+.filterTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.filterList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.filterItem:hover {
+  background: #F8F9FF;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #3A45AD;
+  cursor: pointer;
+}
+
+.filterLabel {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filterIcon {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.mapSection {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+  background: linear-gradient(135deg, #E8EEFF 0%, #F5F7FF 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mapIcon {
+  font-size: 100px;
+}
+
+.mapText {
+  font-size: 20px;
+  color: #666;
+  font-weight: 600;
+}
+
+.mapSubtext {
+  font-size: 16px;
+  color: #999;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .mapContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .filterSection {
+    max-width: 100%;
+  }
+
+  .filterList {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 20px 60px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .filterSection {
+    padding: 20px;
+  }
+
+  .mapPlaceholder {
+    min-height: 500px;
+  }
+
+  .mapIcon {
+    font-size: 70px;
+  }
+
+  .mapText {
+    font-size: 18px;
+  }
+}

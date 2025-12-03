@@ -1,0 +1,183 @@
+.noticeEventSection {
+  padding: 120px 0;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 16px 32px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab:hover {
+  color: #3A45AD;
+}
+
+.activeTab {
+  color: #3A45AD;
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #3A45AD;
+}
+
+.content {
+  margin-bottom: 40px;
+}
+
+.noticeList,
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.listItem {
+  background: white;
+  padding: 24px 32px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  transform: translateX(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.category,
+.status {
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.category {
+  background-color: #e8eaf6;
+  color: #3A45AD;
+}
+
+.status {
+  background-color: #e0e0e0;
+  color: #666;
+}
+
+.status진행중 {
+  background-color: #e8f5e9;
+  color: #4caf50;
+}
+
+.status예정 {
+  background-color: #e3f2fd;
+  color: #2196f3;
+}
+
+.status종료 {
+  background-color: #f5f5f5;
+  color: #999;
+}
+
+.itemTitle {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.date,
+.period {
+  font-size: 18px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.moreBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  background: white;
+  border: 2px solid #3A45AD;
+  color: #3A45AD;
+  padding: 12px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #3A45AD;
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .noticeEventSection {
+    padding: 80px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .tabs {
+    gap: 8px;
+  }
+
+  .tab {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  .listItem {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .itemTitle {
+    font-size: 16px;
+  }
+
+  .date,
+  .period {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,155 @@
+.container {
+  padding: 60px 60px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #3A45AD;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.tableContainer {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHead {
+  background: #3A45AD;
+  color: white;
+}
+
+.tableHead th {
+  padding: 20px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tableBody tr {
+  border-bottom: 1px solid #E0E0E0;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.tableBody tr:hover {
+  background: #F8F9FF;
+}
+
+.tableBody tr:last-child {
+  border-bottom: none;
+}
+
+.tableBody td {
+  padding: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.titleCell {
+  font-weight: 600;
+  color: #333;
+  max-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dateCell {
+  color: #666;
+  white-space: nowrap;
+}
+
+.viewsCell {
+  color: #999;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.pageButton {
+  padding: 10px 15px;
+  background: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 40px;
+}
+
+.pageButton:hover {
+  background: #F8F9FF;
+  border-color: #3A45AD;
+  color: #3A45AD;
+}
+
+.pageButton.active {
+  background: #3A45AD;
+  border-color: #3A45AD;
+  color: white;
+  font-weight: 600;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 20px 60px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .tableContainer {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 600px;
+  }
+
+  .tableHead th,
+  .tableBody td {
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+
+  .titleCell {
+    max-width: 300px;
+  }
+}

@@ -1,0 +1,98 @@
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+/* Title */
+.title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #3A45AD;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #3A45AD;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Card Grid (가로 3열) */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* 반응형 - 태블릿 (2열) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 50px 30px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 50px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+/* 반응형 - 모바일 (1열) */
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 20px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .section {
+    margin-bottom: 60px;
+  }
+}

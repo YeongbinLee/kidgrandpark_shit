@@ -1,0 +1,168 @@
+.courseSection {
+  padding: 120px 0;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: #666;
+  line-height: 1.6;
+}
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.courseCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.courseCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.courseCard:hover .image {
+  transform: scale(1.1);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(58, 69, 173, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.courseCard:hover .imageOverlay {
+  opacity: 1;
+}
+
+.viewBtn {
+  background: white;
+  color: #3A45AD;
+  border: none;
+  padding: 12px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewBtn:hover {
+  transform: scale(1.05);
+}
+
+.cardContent {
+  padding: 24px;
+}
+
+.courseTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.courseDescription {
+  font-size: 18px;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #e8eaf6;
+  color: #3A45AD;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 12px;
+}
+
+@media (max-width: 1024px) {
+  .courseGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .courseSection {
+    padding: 80px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .courseGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,250 @@
+.container {
+  padding: 60px 60px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #3A45AD;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+}
+
+.calendarSection {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.currentMonth {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+}
+
+.monthNavigation {
+  display: flex;
+  gap: 12px;
+}
+
+.navButton {
+  padding: 10px 16px;
+  background: #F8F9FF;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navButton:hover {
+  background: #EEF1FF;
+  border-color: #3A45AD;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.dayHeader {
+  padding: 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #666;
+}
+
+.dayHeader.sunday {
+  color: #FF6B6B;
+}
+
+.dayHeader.saturday {
+  color: #3A45AD;
+}
+
+.dayCell {
+  aspect-ratio: 1;
+  padding: 12px;
+  background: #F8F9FF;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dayCell:hover {
+  background: #EEF1FF;
+  transform: scale(1.05);
+}
+
+.dayCell.empty {
+  background: transparent;
+  cursor: default;
+}
+
+.dayCell.empty:hover {
+  background: transparent;
+  transform: none;
+}
+
+.dayCell.hasEvent {
+  background: #E8EEFF;
+  border: 2px solid #3A45AD;
+}
+
+.dayNumber {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.eventDot {
+  width: 6px;
+  height: 6px;
+  background: #3A45AD;
+  border-radius: 50%;
+}
+
+.eventsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upcomingEvents {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.eventsTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eventCard {
+  padding: 20px;
+  background: #F8F9FF;
+  border-radius: 16px;
+  border-left: 5px solid #3A45AD;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.eventCard:hover {
+  background: #EEF1FF;
+  transform: translateX(5px);
+}
+
+.eventDate {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.eventName {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.eventDescription {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .eventsSection {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 20px 60px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .calendarSection,
+  .upcomingEvents {
+    padding: 24px;
+  }
+
+  .currentMonth {
+    font-size: 24px;
+  }
+
+  .calendarGrid {
+    gap: 4px;
+  }
+
+  .dayHeader {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .dayCell {
+    padding: 8px;
+  }
+
+  .dayNumber {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,123 @@
+/* Review Card */
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid #E0E0E0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  border-color: #3A45AD;
+  box-shadow: 0 8px 30px rgba(58, 69, 173, 0.2);
+  transform: translateY(-8px);
+}
+
+/* Image Container (4:3 비율 - padding-top 방식) */
+.imageWrapper {
+  width: 100%;
+  position: relative;
+  padding-top: 75%; /* 4:3 비율 (3/4 = 0.75 = 75%) */
+  overflow: hidden;
+  background: linear-gradient(135deg, #E8EEFF 0%, #F5F7FF 100%);
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+/* Content */
+.content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+/* Meta (작성자 및 날짜 - 좌측 배치) */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.author {
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+}
+
+.date {
+  font-size: 13px;
+  color: #999;
+}
+
+.date::before {
+  content: '•';
+  margin-right: 8px;
+  color: #E0E0E0;
+}
+
+/* Rating (별점) */
+.rating {
+  display: flex;
+  gap: 4px;
+  font-size: 18px;
+}
+
+.starFilled {
+  color: #FFB800;
+}
+
+.starEmpty {
+  color: #E0E0E0;
+}
+
+/* Summary (한 줄 후기) */
+.summary {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+  .content {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .meta {
+    font-size: 13px;
+  }
+
+  .rating {
+    font-size: 16px;
+  }
+
+  .summary {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,11 @@
+.main {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .main {
+    padding-top: 60px;
+  }
+}

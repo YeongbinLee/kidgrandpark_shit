@@ -1,0 +1,143 @@
+/* Container */
+.container {
+  padding: 60px 60px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* Title & Subtitle */
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #3A45AD;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Stats Container (상단 요약 정보) */
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+.statCard {
+  background: white;
+  border: 3px solid #E0E0E0;
+  border-radius: 16px;
+  padding: 32px 48px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  border-color: #3A45AD;
+  box-shadow: 0 8px 30px rgba(58, 69, 173, 0.15);
+  transform: translateY(-4px);
+}
+
+.statValue {
+  font-size: 42px;
+  font-weight: 700;
+  color: #3A45AD;
+  margin-bottom: 12px;
+}
+
+.statLabel {
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* Review Grid (가로 3개, 세로 4개) */
+.reviewGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 반응형 - 태블릿 */
+@media (max-width: 1024px) {
+  .container {
+    padding: 40px 40px 60px;
+  }
+
+  .reviewGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .statsContainer {
+    gap: 20px;
+  }
+
+  .statCard {
+    padding: 24px 32px;
+  }
+
+  .statValue {
+    font-size: 36px;
+  }
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 20px 60px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .statsContainer {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .statCard {
+    padding: 20px 24px;
+  }
+
+  .statValue {
+    font-size: 32px;
+  }
+
+  .statLabel {
+    font-size: 14px;
+  }
+
+  .reviewGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

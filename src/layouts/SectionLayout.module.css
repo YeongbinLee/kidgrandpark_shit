@@ -1,0 +1,110 @@
+.container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 80px);
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-top: 0px;
+}
+
+.sidebar {
+  background: white;
+  border-right: 1px solid #E0E0E0;
+  padding: 80px 0;
+  position: sticky;
+  top: 80px;
+  width: 180px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.sidebarTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3A45AD;
+  padding: 0 30px;
+  margin-bottom: 30px;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink {
+  display: block;
+  padding: 16px 30px;
+  font-size: 16px;
+  color: #666;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.navLink:hover {
+  background: #F8F9FF;
+  color: #3A45AD;
+}
+
+.navLink.active {
+  background: #F8F9FF;
+  color: #3A45AD;
+  border-left-color: #3A45AD;
+  font-weight: 600;
+}
+
+.content {
+  background: #FAFBFF;
+  min-height: 100%;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding-top: 60px;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 20px 0;
+  }
+
+  .sidebarTitle {
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  .navList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .navLink {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border-left: none;
+    background: white;
+    border: 1px solid #E0E0E0;
+  }
+
+  .navLink.active {
+    border: 1px solid #3A45AD;
+  }
+}
+
+@media (max-width: 80px) {
+  .container {
+    padding-top: 80px;
+  }
+}

@@ -1,0 +1,353 @@
+/* 비주얼 섹션 - 풀스크린 */
+.visualSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 슬라이드 컨테이너 */
+.slideContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 개별 슬라이드 */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 배경 컨테이너 */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 비디오 배경 */
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 이미지 배경 */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 오버레이 - 가독성을 위한 어두운 레이어 */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* 콘텐츠 영역 */
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 2;
+  padding: 0 40px 120px 40px;
+}
+
+/* 텍스트 박스 */
+.textBox {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: -10px;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.title {
+  position: absolute;
+  top: 460px;
+  left: 220px;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.description {
+  position: absolute;
+  top: 540px;
+  left: 220px;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 50px;
+  line-height: 1.5;
+  opacity: 90%;
+}
+
+/* 탐색 버튼 */
+.exploreBtn {
+  position: absolute;
+  top: 620px;
+  left: 220px;
+  background-color: #3a45ad00;
+  color: white;
+  border: 2px solid #ffffff;
+  padding: 10px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.exploreBtn:hover {
+  background-color: #3a45ad;
+  border-color: rgba(255, 255, 255, 0);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 네비게이션 화살표 */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.navBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prevBtn {
+  left: 40px;
+}
+
+.nextBtn {
+  right: 40px;
+}
+
+/* 페이지네이션 인디케이터 */
+.indicators {
+  position: absolute;
+  bottom: 130px;
+  left: 10%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
+}
+
+.activeIndicator {
+  background: #3A45AD;
+  border-color: #3A45AD;
+  width: 40px;
+  border-radius: 6px;
+}
+
+/* 스크롤 다운 인디케이터 */
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  z-index: 10;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+.scrollText {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.scrollIcon {
+  opacity: 0.8;
+}
+
+/* 태블릿 반응형 */
+@media (max-width: 1024px) {
+  .content {
+    padding: 0 40px 100px 40px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .exploreBtn {
+    padding: 14px 40px;
+    font-size: 15px;
+  }
+
+  .navBtn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .prevBtn {
+    left: 20px;
+  }
+
+  .nextBtn {
+    right: 20px;
+  }
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .content {
+    padding: 0 20px 100px 20px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .exploreBtn {
+    padding: 12px 32px;
+    font-size: 14px;
+  }
+
+  .navBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .prevBtn {
+    left: 16px;
+  }
+
+  .nextBtn {
+    right: 16px;
+  }
+
+  .indicators {
+    bottom: 60px;
+    gap: 8px;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .activeIndicator {
+    width: 24px;
+  }
+
+  .scrollIndicator {
+    bottom: 30px;
+  }
+
+  .scrollText {
+    font-size: 10px;
+  }
+}

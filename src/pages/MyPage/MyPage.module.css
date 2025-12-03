@@ -1,0 +1,406 @@
+.container {
+  padding: 100px 60px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E8EEFF 0%, #F5F7FF 100%);
+}
+
+.content {
+  background: white;
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #3A45AD;
+  margin-bottom: 12px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #E0E0E0;
+  margin-bottom: 40px;
+}
+
+.tab {
+  padding: 16px 32px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #999;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  bottom: -2px;
+  text-decoration: none;
+}
+
+.tab:hover {
+  color: #3A45AD;
+}
+
+.activeTab {
+  color: #3A45AD;
+  border-bottom-color: #3A45AD;
+}
+
+.tabContent {
+  min-height: 400px;
+}
+
+/* Dashboard Header */
+.dashboardHeader {
+  margin-bottom: 40px;
+  animation: fadeIn 0.5s ease;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.userName {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.userGrade {
+  padding: 6px 16px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(255, 165, 0, 0.3);
+}
+
+.summaryCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.summaryCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: linear-gradient(135deg, #F8F9FF 0%, #E8EEFF 100%);
+  border-radius: 16px;
+  border: 2px solid #E0E0E0;
+  transition: all 0.3s ease;
+}
+
+.summaryCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(58, 69, 173, 0.15);
+  border-color: #3A45AD;
+}
+
+.cardIcon {
+  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.cardLabel {
+  font-size: 15px;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.cardValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: #3A45AD;
+  margin: 0;
+}
+
+/* Next Reservation Section */
+.nextReservationSection {
+  margin-bottom: 40px;
+  animation: fadeIn 0.6s ease;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.reservationCard {
+  display: flex;
+  gap: 32px;
+  padding: 32px;
+  background: linear-gradient(135deg, #3A45AD 0%, #5a6bc9 100%);
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 8px 30px rgba(58, 69, 173, 0.3);
+}
+
+.reservationInfo {
+  flex: 1;
+}
+
+.reservationType {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.reservationDate {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.dateIcon {
+  font-size: 28px;
+}
+
+.dateText {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.reservationDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detailItem {
+  display: flex;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.detailLabel {
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.detailValue {
+  font-weight: 500;
+}
+
+.qrCodeSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.qrCodePlaceholder {
+  width: 160px;
+  height: 160px;
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.qrIcon {
+  font-size: 48px;
+}
+
+.qrText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  margin: 0;
+}
+
+.qrDescription {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Management Section */
+.managementSection {
+  animation: fadeIn 0.7s ease;
+}
+
+.menuGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.menuCard {
+  padding: 32px 24px;
+  background: #F8F9FF;
+  border: 2px solid #E0E0E0;
+  border-radius: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.menuCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(58, 69, 173, 0.2);
+  border-color: #3A45AD;
+  background: white;
+}
+
+.menuIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.menuTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.menuDescription {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 20px 60px;
+  }
+
+  .content {
+    padding: 40px 24px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab {
+    padding: 14px 20px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  /* Dashboard responsive */
+  .userName {
+    font-size: 24px;
+  }
+
+  .userGrade {
+    font-size: 14px;
+    padding: 4px 12px;
+  }
+
+  .summaryCards {
+    grid-template-columns: 1fr;
+  }
+
+  .summaryCard {
+    padding: 20px;
+  }
+
+  .cardIcon {
+    font-size: 32px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .cardValue {
+    font-size: 24px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+  }
+
+  .reservationCard {
+    flex-direction: column;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .dateText {
+    font-size: 18px;
+  }
+
+  .qrCodePlaceholder {
+    width: 140px;
+    height: 140px;
+  }
+
+  .menuGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .menuCard {
+    padding: 24px 20px;
+  }
+
+  .menuIcon {
+    font-size: 40px;
+  }
+
+  .menuTitle {
+    font-size: 18px;
+  }
+}

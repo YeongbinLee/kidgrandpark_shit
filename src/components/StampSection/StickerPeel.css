@@ -1,0 +1,117 @@
+.draggable {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+.sticker-container {
+  position: relative;
+  width: var(--sticker-width);
+  height: 600px;
+  transform: rotate(var(--sticker-rotate));
+  filter: url(#dropShadow);
+}
+
+.sticker-main {
+  position: absolute;
+  inset: 0;
+  border-radius: 20%;
+  overflow: hidden;
+  transform-origin: top left;
+  transition: clip-path 0.3s var(--sticker-peel-hover-easing);
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+.sticker-container:hover .sticker-main {
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - var(--sticker-peelback-hover)) 0%,
+    100% var(--sticker-peelback-hover),
+    100% 100%,
+    0% 100%
+  );
+}
+
+.touch-active .sticker-main {
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - var(--sticker-peelback-active)) 0%,
+    100% var(--sticker-peelback-active),
+    100% 100%,
+    0% 100%
+  ) !important;
+  transition: clip-path 0.2s var(--sticker-peel-easing) !important;
+}
+
+.sticker-lighting {
+  width: 100%;
+  height: 100%;
+  filter: url(#pointLight);
+}
+
+.sticker-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  border-radius: 20%;
+  overflow: hidden;
+  transform-origin: top left;
+  transform: rotate(var(--peel-direction));
+  opacity: 0;
+  transition: opacity 0.3s var(--sticker-peel-hover-easing);
+  pointer-events: none;
+}
+
+.sticker-container:hover .flap {
+  opacity: 1;
+}
+
+.touch-active .flap {
+  opacity: 1 !important;
+  transition: opacity 0.2s var(--sticker-peel-easing) !important;
+}
+
+.flap-lighting {
+  width: 100%;
+  height: 100%;
+  filter: url(#pointLightFlipped) url(#expandAndFill);
+  transform: scaleX(-1);
+}
+
+.flap-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (hover: none) {
+  .sticker-container:hover .sticker-main {
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  .sticker-container:hover .flap {
+    opacity: 0;
+  }
+}

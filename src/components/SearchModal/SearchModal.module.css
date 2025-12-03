@@ -1,0 +1,283 @@
+/* Overlay */
+.overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  z-index: 999999 !important;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+  animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+}
+
+/* Modal */
+.modal {
+  background: white;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 20px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.3s ease;
+  margin: 0 20px 40px 20px;
+}
+
+/* Search Header */
+.searchHeader {
+  padding: 32px 32px 24px 32px;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.searchForm {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.searchInputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #F8F9FF;
+  border: 2px solid #E0E0E0;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.searchInputWrapper:focus-within {
+  border-color: #3A45AD;
+  background: white;
+  box-shadow: 0 4px 20px rgba(58, 69, 173, 0.15);
+}
+
+.searchIcon {
+  color: #999;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 18px;
+  color: #333;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #999;
+}
+
+.clearBtn {
+  background: #E0E0E0;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.clearBtn:hover {
+  background: #d0d0d0;
+  color: #333;
+}
+
+.closeBtn {
+  background: white;
+  border: 2px solid #E0E0E0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: #f5f5f5;
+  border-color: #3A45AD;
+  color: #3A45AD;
+  transform: rotate(90deg);
+}
+
+/* Content */
+.content {
+  padding: 32px;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+}
+
+/* Search Results */
+.searchResults {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultsPlaceholder {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  padding: 60px 20px;
+  background: #F8F9FF;
+  border-radius: 16px;
+  border: 2px dashed #E0E0E0;
+}
+
+/* Recommendations */
+.recommendations {
+  animation: fadeIn 0.4s ease;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 32px;
+}
+
+.recommendSection {
+  margin-bottom: 32px;
+}
+
+.categoryTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.categoryTitle::before {
+  content: '';
+  width: 4px;
+  height: 18px;
+  background: #3A45AD;
+  border-radius: 2px;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tag {
+  padding: 12px 24px;
+  background: #F8F9FF;
+  border: 2px solid #E0E0E0;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: #3A45AD;
+  border-color: #3A45AD;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58, 69, 173, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .overlay {
+    padding-top: 20px;
+  }
+
+  .modal {
+    margin: 0 12px 20px 12px;
+    border-radius: 16px;
+  }
+
+  .searchHeader {
+    padding: 20px 20px 16px 20px;
+  }
+
+  .searchForm {
+    gap: 12px;
+  }
+
+  .searchInputWrapper {
+    padding: 12px 16px;
+  }
+
+  .searchInput {
+    font-size: 16px;
+  }
+
+  .closeBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .content {
+    padding: 24px 20px;
+    max-height: calc(100vh - 200px);
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .categoryTitle {
+    font-size: 16px;
+  }
+
+  .tag {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .resultsPlaceholder {
+    font-size: 16px;
+    padding: 40px 20px;
+  }
+}
