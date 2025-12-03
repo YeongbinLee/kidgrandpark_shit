@@ -1,86 +1,129 @@
 .container {
-  padding: 60px 60px 80px;
-  max-width: 1100px;
+  padding: 60px 40px 80px;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
 }
 
 .title {
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 42px;
+  font-weight: 800;
   color: #3A45AD;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-bottom: 16px;
+  line-height: 1.3;
 }
 
 .subtitle {
-  font-size: 18px;
+  font-size: 16px;
   color: #666;
-  text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  line-height: 1.6;
 }
 
-.tableContainer {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+.searchSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.tableHead {
-  background: #3A45AD;
-  color: white;
-}
-
-.tableHead th {
-  padding: 20px;
-  text-align: left;
+.totalCount {
   font-size: 16px;
   font-weight: 600;
+  color: #333;
 }
 
-.tableBody tr {
-  border-bottom: 1px solid #E0E0E0;
-  transition: background 0.3s ease;
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchInput {
+  width: 300px;
+  padding: 12px 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #3A45AD;
+}
+
+.searchInput::placeholder {
+  color: #999;
+}
+
+.searchButton {
+  padding: 12px 16px;
+  background: #3A45AD;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 16px;
 }
 
-.tableBody tr:hover {
+.searchButton:hover {
+  background: #2E3795;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  padding: 24px 28px;
+  border-bottom: 1px solid #F0F0F0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.listItem:hover {
   background: #F8F9FF;
 }
 
-.tableBody tr:last-child {
+.listItem:last-child {
   border-bottom: none;
 }
 
-.tableBody td {
-  padding: 20px;
-  font-size: 16px;
-  color: #333;
-}
-
-.titleCell {
+.categoryBadge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #2C3785;
+  color: white;
+  border-radius: 20px;
+  font-size: 13px;
   font-weight: 600;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.listTitle {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
   color: #333;
-  max-width: 500px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin: 0;
+  padding: 0 16px;
 }
 
-.dateCell {
-  color: #666;
-  white-space: nowrap;
-}
-
-.viewsCell {
+.listDate {
+  font-size: 14px;
   color: #999;
-  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .pagination {
@@ -132,24 +175,47 @@
   }
 
   .subtitle {
-    font-size: 16px;
-  }
-
-  .tableContainer {
-    overflow-x: auto;
-  }
-
-  .table {
-    min-width: 600px;
-  }
-
-  .tableHead th,
-  .tableBody td {
-    padding: 15px 10px;
     font-size: 14px;
   }
 
-  .titleCell {
-    max-width: 300px;
+  .searchSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .searchBox {
+    width: 100%;
+  }
+
+  .listItem {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .categoryBadge {
+    margin-right: 0;
+  }
+
+  .listTitle {
+    padding: 0;
+    font-size: 15px;
+  }
+
+  .listDate {
+    font-size: 13px;
+    align-self: flex-start;
+  }
+
+  .pageButton {
+    padding: 8px 12px;
+    font-size: 14px;
+    min-width: 36px;
   }
 }
