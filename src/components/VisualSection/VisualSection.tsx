@@ -96,9 +96,7 @@ const VisualSection: React.FC = () => {
               {slide.videoUrl ? (
                 <video
                   ref={(el) => {
-                    if (el) {
-                      videoRefs.current[index] = el;
-                    }
+                    videoRefs.current[index] = el;
                   }}
                   key={slide.id}
                   className={styles.video}
