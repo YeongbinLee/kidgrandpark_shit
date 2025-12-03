@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ActualMap from '../../components/ActualMap/ActualMap';
 import styles from './MapPage.module.css';
 
 const MapPage: React.FC = () => {
@@ -54,16 +55,7 @@ const MapPage: React.FC = () => {
 
         {/* 우측: 지도 섹션 */}
         <div className={styles.mapSection}>
-          <div className={styles.mapPlaceholder}>
-            <div className={styles.mapIcon}>🗺️</div>
-            <p className={styles.mapText}>서울어린이대공원 전체 지도</p>
-            <p className={styles.mapSubtext}>
-              {filters.zoo && '동물원 '}
-              {filters.garden && '식물원 '}
-              {filters.park && '놀이공원 '}
-              표시중
-            </p>
-          </div>
+          <ActualMap filters={filters} />
         </div>
       </div>
     </div>
