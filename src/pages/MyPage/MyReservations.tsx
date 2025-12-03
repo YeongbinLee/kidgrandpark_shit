@@ -71,7 +71,7 @@ const MyReservations: React.FC = () => {
     ? reservations
     : reservations.filter(res => res.type === activeFilter);
 
-  const handleCancelReservation = (id: number) => {
+  const handleCancelReservation = (_id: number) => {
     if (window.confirm('정말 예약을 취소하시겠습니까?')) {
       alert('예약이 취소되었습니다.');
     }

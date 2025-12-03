@@ -95,7 +95,11 @@ const VisualSection: React.FC = () => {
             <div className={styles.background}>
               {slide.videoUrl ? (
                 <video
-                  ref={(el) => (videoRefs.current[index] = el)}
+                  ref={(el) => {
+                    if (el) {
+                      videoRefs.current[index] = el;
+                    }
+                  }}
                   key={slide.id}
                   className={styles.video}
                   muted

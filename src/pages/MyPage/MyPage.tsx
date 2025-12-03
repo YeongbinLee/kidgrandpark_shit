@@ -6,7 +6,7 @@ const MyPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [userName, setUserName] = useState('김고객');
-  const [userGrade, setUserGrade] = useState('VIP');
+  const [userGrade] = useState('VIP');
   const [upcomingReservationsCount] = useState(2);
   const [unusedCouponsCount] = useState(3);
 
