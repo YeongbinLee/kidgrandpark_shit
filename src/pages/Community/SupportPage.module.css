@@ -160,10 +160,10 @@
 }
 
 .answerContent {
-  padding: 0 24px 24px 24px;
+  padding: 24px 32px 32px 32px;
   font-size: 18px;
   color: #666;
-  line-height: 1.8;
+  line-height: 2.3;
 }
 
 /* 반응형 */
