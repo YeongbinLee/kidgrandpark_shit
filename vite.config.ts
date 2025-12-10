@@ -14,8 +14,17 @@ export default defineConfig({
     ]
   },
   build: {
+    chunkSizeWarningLimit: 600,
     commonjsOptions: {
       transformMixedEsModules: true
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'animation-vendor': ['framer-motion', 'gsap'],
+        }
+      }
     }
   }
 })
