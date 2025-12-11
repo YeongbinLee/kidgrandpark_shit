@@ -135,13 +135,30 @@
 
 /* 모바일 반응형 */
 @media (max-width: 768px) {
+  /* -------------------------------------- */
+  /* COMMAND 1-4: 온라인 스탬프 패럴랙스 효과 제거 */
+  /* -------------------------------------- */
+  /* COMMAND 1-1: 온라인 스탬프 영역 높이 조정 및 축소 */
   .stampSection {
-    padding: 40px 20px;
+    /* 🚨 높이를 뷰포트 높이의 70%로 제한하여 한 화면에 들어오도록 조정 */
+    height: 70vh;
     min-height: auto;
+    max-height: 70vh;
+    overflow-y: hidden; /* 길어지는 콘텐츠는 숨김 */
+    /* 내부 콘텐츠의 상하 패딩을 줄여 공간 확보 */
+    padding: 15px 20px;
+    /* R 3: 패럴랙스 효과 제거 */
+    position: static !important;
+    transform: none !important;
+    background-attachment: scroll !important;
   }
 
   .contentWrapper {
     min-height: auto;
+    height: 100%;
+    /* R 3: 패럴랙스 효과 제거 */
+    position: static !important;
+    transform: none !important;
   }
 
   .textContent {
@@ -151,13 +168,23 @@
 
   .title {
     font-size: 28px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .description {
-    font-size: 15px;
+    /* R 4.1: 본문 폰트 16px */
+    font-size: 16px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
+  /* R 1.1: 터치 영역 확보 */
   .participateBtn {
+    min-width: 44px;
+    min-height: 44px;
     padding: 14px 40px;
     font-size: 15px;
   }
@@ -169,17 +196,24 @@
     display: block;
     right: auto;
     top: auto;
+    /* R 3: 패럴랙스 효과 제거 */
+    transform: none !important;
   }
 
   .cardsContainer {
     height: 400px;
     margin-top: 20px;
+    /* R 3: 패럴랙스 효과 제거 */
+    position: static !important;
+    transform: none !important;
   }
 
   .phoneCard {
     width: 160px;
     height: 280px;
     border-radius: 24px;
+    /* R 3: 패럴랙스 효과 제거 */
+    transform: none !important;
   }
 
   .card1 {

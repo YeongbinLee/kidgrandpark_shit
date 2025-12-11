@@ -1,154 +1,145 @@
+/* 메인 컨테이너 */
 .container {
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: 40px 20px;
+  background-color: #1a1a1a;
+  color: white;
 }
 
+/* 타이틀 */
 .title {
-  font-size: 42px;
-  font-weight: 800;
-  color: #3A45AD;
-  margin-bottom: 16px;
+  font-size: 2.5rem;
+  font-weight: bold;
   text-align: center;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
 .subtitle {
-  font-size: 18px;
-  color: #666;
+  font-size: 1.1rem;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  color: #aaaaaa;
 }
 
 /* 필터 컨테이너 */
 .filterContainer {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 60px;
-  padding: 0 20px;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+/* COMMAND 6-7: 모바일 필터 3열 그리드 레이아웃 */
+@media (max-width: 768px) {
+  /* COMMAND 6: 페이지 너비 제한 및 수평 스크롤 방지 */
+  .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* COMMAND 7: 필터 3열 그리드 배치 */
+  .filterContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 0 16px;
+    margin-bottom: 32px;
+  }
+
+  .filterButton {
+    padding: 8px 12px;
+    font-size: 14px;
+    /* R 1.1: 터치 영역 확보 */
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
 
 .filterButton {
-  padding: 12px 24px;
-  background: white;
-  border: 2px solid #E0E0E0;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #666;
+  padding: 10px 20px;
+  border: 2px solid #444;
+  border-radius: 25px;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .filterButton:hover {
-  background: #F8F9FF;
   border-color: #3A45AD;
-  color: #3A45AD;
-  transform: translateY(-2px);
+  background-color: rgba(58, 69, 173, 0.1);
 }
 
 .filterButton.active {
-  background: #3A45AD;
   border-color: #3A45AD;
+  background-color: #3A45AD;
   color: white;
 }
 
-/* 불규칙 그리드 레이아웃 */
+/* COMMAND A: 그리드 컨테이너 설정 - 규칙적인 3열 구조 */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-auto-rows: 150px;
-  gap: 16px;
-  padding: 20px;
+  /* 3개의 균일한 열(Column)을 만들어 규칙성을 확보합니다. */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px 0;
 }
 
+/* COMMAND B: 아이템 균일 크기 설정 - 모든 카드를 정사각형(1:1)으로 강제 */
 .animalCard {
   position: relative;
-  background: linear-gradient(135deg, #E8EEFF 0%, #F5F7FF 100%);
-  border-radius: 16px;
+  /* 모든 아이템의 종횡비를 1:1로 강제합니다. (가장 확실한 규칙성 확보 방법) */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .animalCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(58, 69, 173, 0.25);
+  box-shadow: 0 10px 30px rgba(58, 69, 173, 0.3);
 }
 
-/* 동물 크기에 따른 그리드 span */
-.animalCard.small {
-  grid-column: span 1;
-  grid-row: span 1;
-}
+/* size 클래스들은 모든 아이템이 동일한 크기이므로 별도 스타일 불필요 */
 
-.animalCard.medium {
-  grid-column: span 2;
-  grid-row: span 1;
-}
-
-.animalCard.large {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-/* 동물 이미지 */
+/* 이미지 컨테이너 */
 .animalImage {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  position: relative;
+  background-color: #2a2a2a;
 }
 
-/* 실제 이미지 스타일 */
+/* 이미지 자체가 아이템 박스를 완벽히 채우도록 설정 */
 .animalImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.3s ease;
 }
 
-.animalCard:hover .animalImage img {
-  transform: scale(1.1);
-}
-
-/* 이모지 스타일 */
-.animalImage .emoji {
-  font-size: 80px;
-  transition: all 0.3s ease;
-}
-
-.animalCard.small .animalImage .emoji {
-  font-size: 60px;
-}
-
-.animalCard.medium .animalImage .emoji {
-  font-size: 80px;
-}
-
-.animalCard.large .animalImage .emoji {
-  font-size: 120px;
-}
-
-.animalCard:hover .animalImage .emoji {
-  transform: scale(0.9);
-}
-
-/* 호버 시 나타나는 오버레이 */
-.animalOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(58, 69, 173, 0.95);
+.emoji {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 5rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* 오버레이 */
+.animalOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 20px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -158,123 +149,32 @@
 }
 
 .animalName {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: bold;
   color: white;
-  text-align: center;
-  padding: 20px;
 }
 
-.animalCard.small .animalName {
-  font-size: 20px;
-}
-
-.animalCard.medium .animalName {
-  font-size: 24px;
-}
-
-.animalCard.large .animalName {
-  font-size: 32px;
-}
-
-/* 반응형 - 태블릿 */
-@media (max-width: 1024px) {
-  .container {
-    padding: 50px 30px;
-  }
-
-  .title {
-    font-size: 36px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-  }
-
+/* 반응형 디자인 */
+@media (max-width: 900px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    grid-auto-rows: 120px;
-    gap: 12px;
-  }
-
-  .animalCard.large {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
-  .animalCard.medium {
-    grid-column: span 2;
-    grid-row: span 1;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* 반응형 - 모바일 */
+/* COMMAND 2-1: 모바일에서 동물 목록 3개씩 배치 */
 @media (max-width: 768px) {
-  .container {
-    padding: 40px 20px;
+  .grid {
+    /* 🚨 한 줄에 3개의 균일한 열로 설정 */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px;
   }
 
   .title {
-    font-size: 30px;
+    font-size: 2rem;
   }
 
   .subtitle {
-    font-size: 15px;
-  }
-
-  .filterContainer {
-    gap: 8px;
-    margin-bottom: 40px;
-  }
-
-  .filterButton {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-auto-rows: 100px;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .animalCard.small .animalImage .emoji {
-    font-size: 40px;
-  }
-
-  .animalCard.medium .animalImage .emoji {
-    font-size: 50px;
-  }
-
-  .animalCard.large .animalImage .emoji {
-    font-size: 70px;
-  }
-
-  .animalCard.small .animalName {
-    font-size: 16px;
-  }
-
-  .animalCard.medium .animalName {
-    font-size: 18px;
-  }
-
-  .animalCard.large .animalName {
-    font-size: 22px;
-  }
-
-  .animalCard.large {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
-  .animalCard.medium {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-
-  .animalCard.small {
-    grid-column: span 1;
-    grid-row: span 1;
+    font-size: 1rem;
   }
 }

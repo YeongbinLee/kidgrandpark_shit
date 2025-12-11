@@ -103,8 +103,71 @@
   }
 }
 
-@media (max-width: 80px) {
+/* COMMAND 8: 모바일 서브페이지 사이드바 수평 배치 */
+@media (max-width: 768px) {
   .container {
-    padding-top: 80px;
+    grid-template-columns: 1fr;
+    /* R 1.2: 헤더 높이 보정 */
+    padding-top: 56px;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 16px 0;
+    /* 배경 흰색 유지 */
+    background: white;
+    width: 100%;
+  }
+
+  .sidebarTitle {
+    /* R 1.2: 좌우 패딩 */
+    padding: 0 16px;
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .navList {
+    display: flex;
+    /* 🚨 수평 스크롤을 위한 핵심 설정 */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* R 1.2: 좌우 패딩 */
+    padding: 0 16px 8px 16px;
+    gap: 8px;
+  }
+
+  .navItem {
+    /* 아이템 축소 방지 */
+    flex-shrink: 0;
+  }
+
+  .navLink {
+    /* R 1.1: 터치 영역 확보 */
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 20px;
+    border-radius: 24px;
+    border-left: none;
+    background: white;
+    border: 2px solid #E0E0E0;
+    font-size: 14px;
+    /* 텍스트 줄바꿈 방지 */
+    white-space: nowrap;
+  }
+
+  .navLink.active {
+    border: 2px solid #3A45AD;
+    background: #F8F9FF;
+  }
+
+  .content {
+    /* 본문 영역 100% 너비 확보 */
+    width: 100%;
+    /* R 1.2: FAB 영역 보정 */
+    padding-bottom: 64px;
   }
 }

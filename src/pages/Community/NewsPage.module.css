@@ -205,13 +205,21 @@
     margin-right: 0;
   }
 
+  /* COMMAND 2-1: 텍스트 정보 우선순위 기반 크기 조정 */
   .listTitle {
     padding: 0;
-    font-size: 15px;
+    font-size: 18px; /* 본문(16px)보다 크게 */
+    font-weight: bold;
+    margin-bottom: 5px; /* 다음 요소와 적절히 띄움 */
+  }
+
+  .categoryBadge {
+    font-size: 13px; /* 낮은 우선순위 */
   }
 
   .listDate {
-    font-size: 13px;
+    font-size: 13px; /* 본문보다 작게 (낮은 우선순위) */
+    color: #888;
     align-self: flex-start;
   }
 

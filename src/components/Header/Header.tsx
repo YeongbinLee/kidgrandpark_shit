@@ -132,7 +132,11 @@ const Header: React.FC = () => {
             <ul className={styles.mobileNavList}>
               {navItems.map((item) => (
                 <li key={item.id} className={styles.mobileNavItem}>
-                  <Link to={item.link} className={styles.mobileNavLink}>
+                  <Link
+                    to={item.link}
+                    className={styles.mobileNavLink}
+                    onClick={() => setIsMobileMenuOpen(false)} /* COMMAND 4: 링크 클릭 시 메뉴 자동 닫힘 */
+                  >
                     {item.name}
                   </Link>
                 </li>

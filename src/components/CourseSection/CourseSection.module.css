@@ -145,24 +145,74 @@
 }
 
 @media (max-width: 768px) {
+  /* -------------------------------------- */
+  /* 모바일 웹 재구성 마스터 룰 적용 */
+  /* -------------------------------------- */
+
   .courseSection {
     padding: 80px 0;
+    /* R 1.2 & R 6.1: 헤더/FAB 여백 확보 */
+    padding-top: calc(56px + 40px); /* 헤더 높이 + 상단 여백 */
+    padding-bottom: calc(64px + 40px); /* FAB 높이 + 하단 여백 */
   }
 
   .container {
-    padding: 0 20px;
+    /* R 1.2: 좌우 패딩 */
+    padding: 0 16px;
   }
 
   .title {
+    /* R 4.1: 타이틀 폰트 */
     font-size: 32px;
   }
 
   .subtitle {
+    /* R 4.1: 본문 폰트 16px */
     font-size: 16px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
+  /* R 2: 콘텐츠 2열 레이아웃 (가장 중요!) */
   .courseGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 🚨 모바일에서 2열 Grid */
+    gap: 16px;
+  }
+
+  .courseTitle {
+    font-size: 18px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .courseDescription {
+    font-size: 14px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  /* R 5.1: 이미지 가시성 */
+  .image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    /* R 3: 패럴랙스 효과 제거 */
+    transform: none !important;
+  }
+
+  .tag {
+    font-size: 14px;
+  }
+
+  /* R 1.1: 터치 영역 확보 */
+  .viewBtn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 24px;
+    font-size: 16px;
   }
 }

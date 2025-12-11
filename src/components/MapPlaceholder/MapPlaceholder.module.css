@@ -75,16 +75,18 @@
 /* 반응형 - 모바일 */
 @media (max-width: 768px) {
   .mapContainer {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   .mapPlaceholder {
-    height: 300px;
-    padding: 30px 20px;
+    height: 280px;
+    /* R 1.2: 좌우 패딩 16px */
+    padding: 24px 16px;
   }
 
   .mapIframeWrapper {
-    height: 300px;
+    height: 280px;
+    border-radius: 16px;
   }
 
   .mapIcon {
@@ -92,10 +94,18 @@
   }
 
   .mapTitle {
-    font-size: 20px;
+    font-size: 18px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-height: 1.4;
   }
 
   .mapSubtitle {
-    font-size: 14px;
+    /* R 4.1: 본문 폰트 16px */
+    font-size: 16px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 }

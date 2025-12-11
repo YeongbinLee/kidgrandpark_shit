@@ -70,29 +70,40 @@
 /* 반응형 - 모바일 (1열) */
 @media (max-width: 768px) {
   .container {
-    padding: 40px 20px;
+    /* R 1.2: 좌우 패딩 16px */
+    padding: 40px 16px;
   }
 
   .title {
-    font-size: 30px;
+    font-size: 28px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .subtitle {
-    font-size: 15px;
-    margin-bottom: 40px;
+    /* R 4.1: 본문 폰트 16px */
+    font-size: 16px;
+    margin-bottom: 32px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .sectionTitle {
-    font-size: 24px;
-    margin-bottom: 24px;
+    font-size: 22px;
+    margin-bottom: 20px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .cardGrid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
   .section {
-    margin-bottom: 60px;
+    margin-bottom: 48px;
   }
 }

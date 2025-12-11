@@ -243,13 +243,31 @@
 
 /* 모바일 반응형 */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-    height: 60px;
+  /* -------------------------------------- */
+  /* 모바일 웹 재구성 마스터 룰 적용 */
+  /* -------------------------------------- */
+
+  /* R 1.1: 헤더 고정 및 높이 설정 */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px; /* 헤더 높이 56px로 표준화 */
+    z-index: 1000;
   }
 
+  .container {
+    /* R 1.2: 좌우 패딩 */
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  /* COMMAND 2-1: 헤더 로고 크기 수정 */
   .logo img {
-    height: 35px;
+    width: 120px; /* 적절한 너비 지정 */
+    height: auto; /* 비율 유지 */
+    min-height: 44px; /* 최소 터치 영역 확보 (R 1.1) */
   }
 
   /* 데스크톱 네비게이션 숨김 */
@@ -257,9 +275,12 @@
     display: none;
   }
 
-  /* 햄버거 메뉴 표시 */
+  /* R 1.1: 햄버거 메뉴 터치 영역 확보 */
   .hamburger {
     display: flex;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
   }
 
   /* 모바일 메뉴 표시 */
@@ -267,12 +288,55 @@
     display: block;
   }
 
+  /* R 1.1: 검색 버튼 터치 영역 확보 */
   .searchBtn {
-    padding: 4px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
   }
 
+  /* R 1.1: 로그인 버튼 터치 영역 확보 */
   .loginBtn {
-    padding: 8px 16px;
-    font-size: 13px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 16px; /* COMMAND 5: 높이 20% 감소 (12px → 8px) */
+    font-size: 14px;
+  }
+
+  .myPageBtn,
+  .logoutBtn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  /* R 4.2: 모바일 메뉴 링크 가독성 */
+  .mobileNavLink {
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  /* COMMAND 1: 헤더 버튼 수평 정렬을 우측으로 수정 */
+  .actions {
+    display: flex;
+
+    /* 🚨 수평 정렬 수정 핵심: 우측 끝으로 정렬 */
+    justify-content: flex-end;
+
+    /* 수직 중앙 정렬은 그대로 유지 */
+    align-items: center;
+
+    /* 컨테이너 자체의 높이를 헤더 높이만큼 설정해야 align-items가 작동합니다. */
+    height: 100%; /* 헤더 높이(56px)와 동일하게 설정 */
+    width: 100%;
+    gap: 8px;
+  }
+
+  /* 햄버거 버튼과 일반 버튼 자체의 높이 통일 */
+  .actions button,
+  .actions a {
+    height: 44px; /* 최소 터치 영역 높이 통일 */
   }
 }

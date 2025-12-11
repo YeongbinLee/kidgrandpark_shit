@@ -292,33 +292,80 @@
 
 /* 모바일 반응형 */
 @media (max-width: 768px) {
+  /* -------------------------------------- */
+  /* 모바일 웹 재구성 마스터 룰 적용 */
+  /* -------------------------------------- */
+
   .content {
-    padding: 0 20px 100px 20px;
+    /* R 1.2: 좌우 패딩 */
+    padding: 0 16px 100px 16px;
+    align-items: flex-end;
+    /* COMMAND 1-1: 중앙 정렬로 변경 */
+    justify-content: center;
+  }
+
+  /* COMMAND 1-1: 비주얼 영역 타이포 및 버튼 중앙 정렬 */
+  .textBox {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .subtitle {
     font-size: 14px;
     margin-bottom: 12px;
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .title {
+    /* 모바일에서 absolute positioning 제거 */
+    position: static;
     font-size: 32px;
     margin-bottom: 16px;
+    /* 텍스트 가독성을 위한 스타일 조정 */
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 그림자 추가 */
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .description {
+    /* 모바일에서 absolute positioning 제거 */
+    position: static;
+    /* R 4.1: 본문 폰트 16px */
     font-size: 16px;
     margin-bottom: 32px;
+    /* 텍스트 가독성을 위한 스타일 조정 */
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    /* R 4.2: 단어 단위 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .exploreBtn {
+    /* 모바일에서 absolute positioning 제거 */
+    position: static;
+    /* R 1.1: 터치 영역 확보 */
+    min-width: 44px;
+    min-height: 44px;
     padding: 12px 32px;
     font-size: 14px;
   }
 
+  /* R 1.1: 네비게이션 버튼 터치 영역 확보 */
   .navBtn {
-    width: 40px;
-    height: 40px;
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
   }
 
   .prevBtn {
@@ -329,18 +376,43 @@
     right: 16px;
   }
 
+  /* COMMAND 1-2: 비주얼 인디케이터 바 크기 축소 및 좌측 배치 */
   .indicators {
     bottom: 60px;
-    gap: 8px;
+    left: 16px;
+    transform: translateX(0); /* 기존 translateX(-50%) 제거 */
+    gap: 4px;
   }
 
+  /* R 1.1: 인디케이터 터치 영역 (크기 축소) */
   .indicator {
-    width: 8px;
-    height: 8px;
+    min-width: 32px;
+    min-height: 32px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .activeIndicator {
-    width: 24px;
+  .indicator::before {
+    content: '';
+    /* 🚨 크기 축소: 8px → 6px */
+    width: 6px;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .activeIndicator::before {
+    /* 🚨 활성 인디케이터 크기 축소: 24px → 18px */
+    width: 18px;
+    height: 3px;
+    border-radius: 2px;
+    background: #3A45AD;
+    border-color: #3A45AD;
   }
 
   .scrollIndicator {

@@ -14,13 +14,20 @@
   box-sizing: border-box;
 }
 
+/* COMMAND 1: 스크롤 오류 해결 */
+html, body {
+  /* 🚨 높이 강제 설정이나 넘침 방지 설정 제거하여 기본 스크롤 동작 복구 */
+  height: auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; /* iOS 스크롤 성능 최적화 */
+  width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -71,18 +78,19 @@ input, textarea, select {
 
 /* 스크롤바 스타일링 */
 ::-webkit-scrollbar {
-  width: 10px;
+  height: 8px; /* Adjust for horizontal scrollbar */
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--gray-light);
+  background: #2c2c2c;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-medium);
-  border-radius: 5px;
+  background: var(--primary-color);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color);
+  background: #5A67D8;
 }
