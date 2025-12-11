@@ -1,6 +1,7 @@
 .courseSection {
   padding: 120px 0;
   background-color: #f8f9fa;
+  scroll-snap-align: start;
 }
 
 .container {
@@ -152,8 +153,10 @@
   .courseSection {
     padding: 80px 0;
     /* R 1.2 & R 6.1: 헤더/FAB 여백 확보 */
-    padding-top: calc(56px + 40px); /* 헤더 높이 + 상단 여백 */
-    padding-bottom: calc(64px + 40px); /* FAB 높이 + 하단 여백 */
+    padding-top: calc(56px + 40px);
+    /* 헤더 높이 + 상단 여백 */
+    padding-bottom: calc(64px + 40px);
+    /* FAB 높이 + 하단 여백 */
   }
 
   .container {
@@ -177,7 +180,8 @@
   /* R 2: 콘텐츠 2열 레이아웃 (가장 중요!) */
   .courseGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 🚨 모바일에서 2열 Grid */
+    grid-template-columns: 1fr 1fr;
+    /* 🚨 모바일에서 2열 Grid */
     gap: 16px;
   }
 

@@ -1,6 +1,7 @@
 .reviewSection {
   padding: 120px 0;
   background-color: white;
+  scroll-snap-align: start;
 }
 
 .container {
@@ -52,7 +53,8 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  padding-top: 80%; /* 16:9 비율 */
+  padding-top: 80%;
+  /* 16:9 비율 */
   overflow: hidden;
 }
 
@@ -230,7 +232,8 @@
   /* R 2: 콘텐츠 2열 레이아웃 */
   .reviewCards {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 🚨 모바일에서 2열 Grid */
+    grid-template-columns: 1fr 1fr;
+    /* 🚨 모바일에서 2열 Grid */
     gap: 16px;
   }
 

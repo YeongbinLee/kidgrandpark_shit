@@ -8,4 +8,11 @@
 .home {
   width: 100%;
   overflow-x: hidden;
+  /* Scroll Snap Container */
+  scroll-snap-type: y proximity;
+}
+
+/* 섹션별 스크롤 스냅 */
+.home>section {
+  scroll-snap-align: start;
 }
