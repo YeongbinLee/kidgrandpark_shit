@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './VisualSection.module.css';
 
 interface Slide {
@@ -8,10 +9,12 @@ interface Slide {
   description: string;
   videoUrl: string; // 실제 프로젝트에서는 비디오 URL을 사용
   imageUrl: string; // 대체 이미지 (비디오가 없을 경우)
+  link: string;
 }
 
 const VisualSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const slides: Slide[] = [
@@ -22,6 +25,7 @@ const VisualSection: React.FC = () => {
       description: '다양한 동물들과 함께하는 특별한 시간',
       videoUrl: '/tiger.mp4',
       imageUrl: 'https://via.placeholder.com/1920x1080/3A45AD/ffffff?text=Urban+Zoo',
+      link: '/zoo/animals',
     },
     {
       id: 2,
@@ -30,6 +34,7 @@ const VisualSection: React.FC = () => {
       description: '계절마다 변하는 아름다운 식물원',
       videoUrl: '/garden.mp4',
       imageUrl: 'https://via.placeholder.com/1920x1080/4CAF50/ffffff?text=Urban+Garden',
+      link: '/garden/indoor',
     },
     {
       id: 3,
@@ -38,6 +43,7 @@ const VisualSection: React.FC = () => {
       description: '온 가족이 함께 즐기는 어트랙션',
       videoUrl: '/roller.mp4',
       imageUrl: 'https://via.placeholder.com/1920x1080/FF5722/ffffff?text=Playground',
+      link: '/park/attractions',
     },
   ];
 
@@ -87,9 +93,8 @@ const VisualSection: React.FC = () => {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`${styles.slide} ${
-              index === currentSlide ? styles.active : ''
-            }`}
+            className={`${styles.slide} ${index === currentSlide ? styles.active : ''
+              }`}
           >
             {/* 배경 이미지/비디오 */}
             <div className={styles.background}>
@@ -130,7 +135,12 @@ const VisualSection: React.FC = () => {
                 <p className={styles.subtitle}>{slide.subtitle}</p>
                 <h1 className={styles.title}>{slide.title}</h1>
                 <p className={styles.description}>{slide.description}</p>
-                <button className={styles.exploreBtn}>자세히 보기</button>
+                <button
+                  className={styles.exploreBtn}
+                  onClick={() => navigate(slide.link)}
+                >
+                  자세히 보기
+                </button>
               </div>
             </div>
           </div>
@@ -187,9 +197,8 @@ const VisualSection: React.FC = () => {
         {slides.map((_, index) => (
           <button
             key={index}
-            className={`${styles.indicator} ${
-              index === currentSlide ? styles.activeIndicator : ''
-            }`}
+            className={`${styles.indicator} ${index === currentSlide ? styles.activeIndicator : ''
+              }`}
             onClick={() => goToSlide(index)}
             aria-label={`슬라이드 ${index + 1}`}
           />
