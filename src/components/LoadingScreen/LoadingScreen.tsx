@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from './LoadingScreen.module.css';
 
 interface LoadingScreenProps {
@@ -6,80 +6,103 @@ interface LoadingScreenProps {
     minLoadTime?: number;
 }
 
+// Key assets to preload
+const PRELOAD_IMAGES = [
+    '/logo-horizontal.png',
+    '/logo-vertical.png',
+    '/course/family.png',
+    '/course/couple.png',
+    '/course/wellness.png',
+    '/course/fish.png',
+];
+
+const PRELOAD_VIDEOS = [
+    '/tiger.mp4',
+    '/garden.mp4',
+    '/roller.mp4',
+];
+
 const LoadingScreen: React.FC<LoadingScreenProps> = ({
     onLoadComplete,
-    minLoadTime = 2000,
+    minLoadTime = 1000, // Reduced to 1 second
 }) => {
     const [progress, setProgress] = useState(0);
     const [fadeOut, setFadeOut] = useState(false);
 
+    const finishLoading = useCallback(() => {
+        setProgress(100);
+        setTimeout(() => {
+            setFadeOut(true);
+            setTimeout(onLoadComplete, 500);
+        }, 200);
+    }, [onLoadComplete]);
+
     useEffect(() => {
-        let startTime = Date.now();
-        let animationFrame: number;
-        let loadComplete = false;
+        const startTime = Date.now();
+        let loadedCount = 0;
+        const totalAssets = PRELOAD_IMAGES.length + PRELOAD_VIDEOS.length;
+        let completed = false;
 
-        // Simulate progress
         const updateProgress = () => {
+            if (completed) return;
+            const newProgress = Math.min((loadedCount / totalAssets) * 100, 95);
+            setProgress(newProgress);
+        };
+
+        const checkComplete = () => {
+            if (completed) return;
+
             const elapsed = Date.now() - startTime;
-            const targetProgress = Math.min((elapsed / minLoadTime) * 100, 100);
-
-            setProgress(targetProgress);
-
-            if (targetProgress < 100) {
-                animationFrame = requestAnimationFrame(updateProgress);
+            if (loadedCount >= totalAssets && elapsed >= minLoadTime) {
+                completed = true;
+                finishLoading();
+            } else if (loadedCount >= totalAssets && elapsed < minLoadTime) {
+                // All loaded but min time not reached
+                setTimeout(() => {
+                    if (!completed) {
+                        completed = true;
+                        finishLoading();
+                    }
+                }, minLoadTime - elapsed);
             }
         };
 
-        animationFrame = requestAnimationFrame(updateProgress);
-
-        // Handle window load event
-        const handleLoad = () => {
-            loadComplete = true;
+        const handleAssetLoad = () => {
+            loadedCount++;
+            updateProgress();
             checkComplete();
         };
 
-        // Check if both conditions met (min time + load complete)
-        const checkComplete = () => {
-            const elapsed = Date.now() - startTime;
-            if (elapsed >= minLoadTime && loadComplete) {
-                setProgress(100);
-                setTimeout(() => {
-                    setFadeOut(true);
-                    setTimeout(onLoadComplete, 500); // Wait for fade animation
-                }, 200);
-            } else if (elapsed >= minLoadTime && !loadComplete) {
-                // Min time passed, wait for load
-                window.addEventListener('load', handleLoad);
-            } else if (loadComplete && elapsed < minLoadTime) {
-                // Loaded but min time not passed
-                setTimeout(checkComplete, minLoadTime - elapsed);
-            }
-        };
+        // Preload images
+        PRELOAD_IMAGES.forEach((src) => {
+            const img = new Image();
+            img.onload = handleAssetLoad;
+            img.onerror = handleAssetLoad; // Count errors too to not block
+            img.src = src;
+        });
 
-        // If document already loaded
-        if (document.readyState === 'complete') {
-            loadComplete = true;
-        } else {
-            window.addEventListener('load', handleLoad);
-        }
+        // Preload videos (just metadata, not entire video)
+        PRELOAD_VIDEOS.forEach((src) => {
+            const video = document.createElement('video');
+            video.preload = 'metadata';
+            video.onloadedmetadata = handleAssetLoad;
+            video.onerror = handleAssetLoad;
+            video.src = src;
+        });
 
-        // Start checking
-        const minTimeTimeout = setTimeout(() => {
-            if (loadComplete) {
-                setProgress(100);
-                setTimeout(() => {
-                    setFadeOut(true);
-                    setTimeout(onLoadComplete, 500);
-                }, 200);
+        // Fallback: force complete after 5 seconds max
+        const fallbackTimeout = setTimeout(() => {
+            if (!completed) {
+                completed = true;
+                finishLoading();
             }
-        }, minLoadTime);
+        }, 5000);
 
         return () => {
-            cancelAnimationFrame(animationFrame);
-            clearTimeout(minTimeTimeout);
-            window.removeEventListener('load', handleLoad);
+            completed = true;
+            clearTimeout(fallbackTimeout);
         };
-    }, [minLoadTime, onLoadComplete]);
+    }, [minLoadTime, finishLoading]);
 
     return (
         <div className={`${styles.loadingScreen} ${fadeOut ? styles.fadeOut : ''}`}>
@@ -88,7 +111,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
                 alt="어린이대공원"
                 className={styles.logo}
                 onError={(e) => {
-                    // Fallback if vertical logo doesn't exist
                     (e.target as HTMLImageElement).src = '/logo-horizontal.png';
                 }}
             />

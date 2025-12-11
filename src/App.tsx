@@ -17,7 +17,7 @@ function App() {
       {isLoading && (
         <LoadingScreen
           onLoadComplete={() => setIsLoading(false)}
-          minLoadTime={2000}
+          minLoadTime={1000}
         />
       )}
       <AppRouter />
