@@ -183,12 +183,7 @@
   padding: 8px;
 }
 
-.hamburgerLine {
-  width: 24px;
-  height: 2px;
-  background-color: #333;
-  transition: all 0.3s ease;
-}
+
 
 /* 모바일 메뉴 */
 .mobileMenu {

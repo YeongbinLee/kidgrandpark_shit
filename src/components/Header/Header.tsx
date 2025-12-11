@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Menu } from 'lucide-react';
 import styles from './Header.module.css';
 
 const Header: React.FC = () => {
@@ -94,66 +95,66 @@ const Header: React.FC = () => {
             onClick={toggleMobileMenu}
             aria-label="메뉴"
           >
-            <span className={styles.hamburgerLine}></span>
-            <span className={styles.hamburgerLine}></span>
-            <span className={styles.hamburgerLine}></span>
+            <Menu className="w-6 h-6" />
           </button>
         </div>
       </div>
 
       {/* 모바일 메뉴 */}
-      {isMobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          <nav className={styles.mobileNav}>
-            <ul className={styles.mobileNavList}>
-              {navItems.map((item) => (
-                <li key={item.id} className={styles.mobileNavItem}>
-                  <Link
-                    to={item.link}
-                    className={styles.mobileNavLink}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+      {
+        isMobileMenuOpen && (
+          <div className={styles.mobileMenu}>
+            <nav className={styles.mobileNav}>
+              <ul className={styles.mobileNavList}>
+                {navItems.map((item) => (
+                  <li key={item.id} className={styles.mobileNavItem}>
+                    <Link
+                      to={item.link}
+                      className={styles.mobileNavLink}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
 
-            {/* COMMAND 1-2: 햄버거 메뉴 내부 조건부 버튼 렌더링 */}
-            <div className={styles.mobileMenuActions}>
-              {isLoggedIn ? (
-                <>
+              {/* COMMAND 1-2: 햄버거 메뉴 내부 조건부 버튼 렌더링 */}
+              <div className={styles.mobileMenuActions}>
+                {isLoggedIn ? (
+                  <>
+                    <Link
+                      to="/mypage"
+                      className={styles.mobileMyPageLink}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      마이페이지
+                    </Link>
+                    <button
+                      className={styles.mobileLogoutBtn}
+                      onClick={() => {
+                        handleLogoutClick();
+                        setIsMobileMenuOpen(false);
+                      }}
+                    >
+                      로그아웃
+                    </button>
+                  </>
+                ) : (
                   <Link
-                    to="/mypage"
-                    className={styles.mobileMyPageLink}
+                    to="/login"
+                    className={styles.mobileLoginLink}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    마이페이지
+                    로그인
                   </Link>
-                  <button
-                    className={styles.mobileLogoutBtn}
-                    onClick={() => {
-                      handleLogoutClick();
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    로그아웃
-                  </button>
-                </>
-              ) : (
-                <Link
-                  to="/login"
-                  className={styles.mobileLoginLink}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  로그인
-                </Link>
-              )}
-            </div>
-          </nav>
-        </div>
-      )}
-    </header>
+                )}
+              </div>
+            </nav>
+          </div>
+        )
+      }
+    </header >
   );
 };
 
