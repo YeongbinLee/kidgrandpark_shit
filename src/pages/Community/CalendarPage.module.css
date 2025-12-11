@@ -221,6 +221,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -330,27 +331,30 @@
 }
 
 @media (max-width: 768px) {
+
   /* COMMAND 3: 이벤트 일정 페이지 가로 스크롤 재조정 */
   .container {
     /* 🚨 너비 제어를 다시 한번 강제 */
     width: 100%;
     max-width: 100%;
-    padding: 100px 0 60px 0; /* 불필요한 패딩이 너비를 늘릴 수 있으므로 좌우 패딩 제거 */
-    overflow-x: hidden; /* 가로 스크롤을 최종적으로 숨김 */
+    padding: 100px 16px 60px 16px;
+    overflow-x: hidden;
+    /* 가로 스크롤을 최종적으로 숨김 */
+    box-sizing: border-box;
   }
 
   .title {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .subtitle {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .searchSection {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
   }
 
   .searchInput {
@@ -361,42 +365,67 @@
     width: 100%;
   }
 
-  .calendarSection,
-  .upcomingEvents {
-    padding: 24px;
+  .calendarSection {
+    padding: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .currentMonth {
-    font-size: 24px;
+    font-size: 20px;
   }
 
-  /* 🚨 캘린더 그리드가 너무 넓을 경우 수평 스크롤 허용 */
   .calendarGrid {
-    gap: 4px;
+    gap: 2px;
     width: 100%;
-    display: grid; /* 그리드 유지 */
-    overflow-x: auto; /* 캘린더 내부만 수평 스크롤 허용 */
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .calendarSection,
-  .eventDetails {
-    /* 캘린더 섹션 너비 제어 */
-    width: 100%;
-    max-width: 100%;
-    padding: 16px; /* 좌우 패딩 최소화 */
   }
 
   .dayHeader {
-    padding: 8px;
-    font-size: 14px;
+    padding: 6px 2px;
+    font-size: 12px;
   }
 
   .dayCell {
-    padding: 8px;
+    padding: 4px;
+    aspect-ratio: 1;
+    min-width: 0;
+    /* Allow shrinking */
   }
 
   .dayNumber {
+    font-size: 14px;
+  }
+
+  .eventDot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .eventDetails {
+    padding: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .eventsTitle {
+    font-size: 18px;
+  }
+
+  .eventCard {
+    padding: 16px;
+  }
+
+  .eventName {
     font-size: 16px;
+  }
+
+  .eventInfoItem {
+    font-size: 14px;
+  }
+
+  .eventDescription {
+    font-size: 14px;
   }
 }
