@@ -96,22 +96,6 @@ const Header: React.FC = () => {
             </svg>
           </button>
 
-          {/* 로그인/로그아웃 버튼 */}
-          {isLoggedIn ? (
-            <>
-              <button className={styles.myPageBtn} onClick={handleMyPageClick}>
-                마이페이지
-              </button>
-              <button className={styles.logoutBtn} onClick={handleLogoutClick}>
-                로그아웃
-              </button>
-            </>
-          ) : (
-            <button className={styles.loginBtn} onClick={handleLoginClick}>
-              로그인
-            </button>
-          )}
-
           {/* 모바일 햄버거 메뉴 버튼 */}
           <button
             className={styles.hamburger}
@@ -135,13 +119,45 @@ const Header: React.FC = () => {
                   <Link
                     to={item.link}
                     className={styles.mobileNavLink}
-                    onClick={() => setIsMobileMenuOpen(false)} /* COMMAND 4: 링크 클릭 시 메뉴 자동 닫힘 */
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
+
+            {/* COMMAND 1-2: 햄버거 메뉴 내부 조건부 버튼 렌더링 */}
+            <div className={styles.mobileMenuActions}>
+              {isLoggedIn ? (
+                <>
+                  <Link
+                    to="/mypage"
+                    className={styles.mobileMyPageLink}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    마이페이지
+                  </Link>
+                  <button
+                    className={styles.mobileLogoutBtn}
+                    onClick={() => {
+                      handleLogoutClick();
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    로그아웃
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/login"
+                  className={styles.mobileLoginLink}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  로그인
+                </Link>
+              )}
+            </div>
           </nav>
         </div>
       )}

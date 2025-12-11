@@ -318,6 +318,52 @@
     overflow-wrap: break-word;
   }
 
+  /* COMMAND 1-2: 모바일 메뉴 내부 액션 버튼 스타일 */
+  .mobileMenuActions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 40px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 12px;
+  }
+
+  .mobileMyPageLink,
+  .mobileLoginLink {
+    display: block;
+    padding: 14px 0;
+    text-align: center;
+    background-color: #3A45AD;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .mobileMyPageLink:hover,
+  .mobileLoginLink:hover {
+    background-color: #2d3689;
+  }
+
+  .mobileLogoutBtn {
+    padding: 14px 0;
+    text-align: center;
+    background-color: white;
+    color: #666;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .mobileLogoutBtn:hover {
+    background-color: #f5f5f5;
+    border-color: #999;
+    color: #333;
+  }
+
   /* COMMAND 1: 헤더 버튼 수평 정렬을 우측으로 수정 */
   .actions {
     display: flex;

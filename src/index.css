@@ -27,6 +27,7 @@ html {
   scroll-behavior: smooth;
 }
 
+/* COMMAND 2: 단어 단위 줄바꿈 방지 설정 (글로벌 CSS) */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -36,6 +37,15 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1.6;
+
+  /* 🚨 CJK (한중일) 언어에서 단어 단위로만 줄바꿈 (매우 중요) */
+  word-break: keep-all;
+
+  /* 단어가 너무 길어서 줄바꿈이 필요한 경우를 대비 */
+  overflow-wrap: break-word;
+
+  /* 일부 브라우저 호환성을 위해 추가 */
+  word-wrap: break-word;
 }
 
 h1, h2, h3, h4, h5, h6 {

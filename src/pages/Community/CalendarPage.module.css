@@ -330,13 +330,13 @@
 }
 
 @media (max-width: 768px) {
-  /* COMMAND 3-1: 가로 스크롤 방지 및 너비 제어 */
+  /* COMMAND 3: 이벤트 일정 페이지 가로 스크롤 재조정 */
   .container {
-    padding: 100px 20px 60px;
-    /* 🚨 가로 오버플로우 발생 시 필수 조치 */
+    /* 🚨 너비 제어를 다시 한번 강제 */
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden; /* 가로 스크롤 차단 */
+    padding: 100px 0 60px 0; /* 불필요한 패딩이 너비를 늘릴 수 있으므로 좌우 패딩 제거 */
+    overflow-x: hidden; /* 가로 스크롤을 최종적으로 숨김 */
   }
 
   .title {
@@ -376,6 +376,15 @@
     width: 100%;
     display: grid; /* 그리드 유지 */
     overflow-x: auto; /* 캘린더 내부만 수평 스크롤 허용 */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .calendarSection,
+  .eventDetails {
+    /* 캘린더 섹션 너비 제어 */
+    width: 100%;
+    max-width: 100%;
+    padding: 16px; /* 좌우 패딩 최소화 */
   }
 
   .dayHeader {
