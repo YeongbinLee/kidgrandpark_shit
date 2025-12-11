@@ -30,14 +30,6 @@ const Header: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleLoginClick = () => {
-    navigate('/login');
-  };
-
-  const handleMyPageClick = () => {
-    navigate('/mypage');
-  };
-
   const handleLogoutClick = () => {
     if (window.confirm('로그아웃 하시겠습니까?')) {
       localStorage.removeItem('isLoggedIn');
