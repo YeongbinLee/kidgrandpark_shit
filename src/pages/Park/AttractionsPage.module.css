@@ -7,7 +7,7 @@
 
 /* Title */
 .title {
-  font-size: 42px;
+  font-size: 68px;
   font-weight: 800;
   color: #3A45AD;
   text-align: center;
@@ -94,6 +94,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
