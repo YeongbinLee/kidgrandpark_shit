@@ -38,7 +38,7 @@
 
 .reviewCards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   width: 100%;
 }
@@ -52,7 +52,8 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  padding-top: 80%; /* 16:9 비율 */
+  padding-top: 80%;
+  /* 16:9 비율 */
   overflow: hidden;
 }
 
@@ -230,7 +231,8 @@
   /* R 2: 콘텐츠 2열 레이아웃 */
   .reviewCards {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 🚨 모바일에서 2열 Grid */
+    grid-template-columns: 1fr 1fr;
+    /* 🚨 모바일에서 2열 Grid */
     gap: 16px;
   }
 

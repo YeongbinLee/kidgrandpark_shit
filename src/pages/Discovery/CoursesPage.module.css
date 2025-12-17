@@ -1,7 +1,7 @@
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: 60px 60px 80px;
   min-height: 100vh;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .courseHeader {
-  padding: 32px;
+  padding: 30px;
   background: linear-gradient(135deg, #E8EEFF 0%, #F5F7FF 100%);
   display: flex;
   align-items: center;
@@ -50,8 +50,8 @@
 
 .courseImageWrapper {
   min-width: 200px;
-  width: 200px;
-  height: 150px;
+  width: 340px;
+  height: 200px;
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
@@ -62,6 +62,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .courseHeaderInfo {
@@ -72,7 +73,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
 
 .courseName {
@@ -94,6 +95,7 @@
   font-size: 16px;
   color: #666;
   line-height: 1.6;
+  text-align: justify;
 }
 
 .courseBody {
@@ -195,6 +197,33 @@
 
 .stopEmoji {
   font-size: 32px;
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 24px;
+  background: #3A45AD;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggleButton:hover {
+  background: #2e3789;
+  transform: scale(1.02);
+}
+
+.toggleButton svg {
+  flex-shrink: 0;
 }
 
 /* 반응형 - 태블릿 */

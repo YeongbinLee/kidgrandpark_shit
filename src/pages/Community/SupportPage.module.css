@@ -95,13 +95,15 @@
 }
 
 .sectionIcon {
-  font-size: 32px;
+  width: 0px;
+  height: 28px;
+  color: #3A45AD;
 }
 
 .contactGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .contactCard {
@@ -118,8 +120,10 @@
 }
 
 .contactIcon {
-  font-size: 48px;
-  margin-bottom: 16px;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 16px;
+  color: #3A45AD;
 }
 
 .contactTitle {
@@ -130,9 +134,9 @@
 }
 
 .contactInfo {
-  font-size: 18px;
+  font-size: 16px;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
 .faqSection {
@@ -213,9 +217,9 @@
 
 .answerContent {
   padding: 24px 32px 32px 32px;
-  font-size: 18px;
+  font-size: 16px;
   color: #666;
-  line-height: 2.3;
+  line-height: 2.0;
 }
 
 /* 반응형 */
@@ -260,6 +264,6 @@
   }
 
   .questionText {
-    font-size: 18px;
+    font-size: 16px;
   }
 }

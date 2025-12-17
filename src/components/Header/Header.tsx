@@ -130,16 +130,35 @@ const Header: React.FC = () => {
               ))}
             </ul>
 
-            {/* COMMAND 1-2: 햄버거 메뉴 내부 조건부 버튼 렌더링 */}
+            {/* 로그인/프로필 영역 */}
             <div className={styles.mobileMenuActions}>
               {isLoggedIn ? (
                 <>
                   <Link
                     to="/mypage"
-                    className={styles.mobileMyPageLink}
+                    className={styles.mobileProfileLink}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    마이페이지
+                    <div className={styles.mobileProfileLeft}>
+                      {localStorage.getItem('profileImage') ? (
+                        <img
+                          src={localStorage.getItem('profileImage') || ''}
+                          alt="프로필"
+                          className={styles.mobileProfileImage}
+                        />
+                      ) : (
+                        <div className={styles.mobileProfileDefault}>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+                          </svg>
+                        </div>
+                      )}
+                      <span className={styles.mobileProfileName}>
+                        {localStorage.getItem('userName') || localStorage.getItem('userEmail')?.split('@')[0] || '사용자'}님 안녕하세요!
+                      </span>
+                    </div>
+                    <span className={styles.mobileGradeBadge}>VIP</span>
                   </Link>
                   <button
                     className={styles.mobileLogoutBtn}

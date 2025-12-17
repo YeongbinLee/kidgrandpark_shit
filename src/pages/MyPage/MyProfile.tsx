@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './MyProfile.module.css';
 
 const MyProfile: React.FC = () => {
   const navigate = useNavigate();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [userEmail, setUserEmail] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [profileImage, setProfileImage] = useState<string | null>(null);
 
   // 알림 설정
   const [emailConsent, setEmailConsent] = useState<boolean>(true);
@@ -17,9 +19,48 @@ const MyProfile: React.FC = () => {
   useEffect(() => {
     const email = localStorage.getItem('userEmail') || '';
     setUserEmail(email);
-    setUserName(email.split('@')[0]);
+
+    // 저장된 이름 불러오기 (없으면 이메일에서 추출)
+    const savedName = localStorage.getItem('userName');
+    if (savedName) {
+      setUserName(savedName);
+    } else {
+      setUserName(email.split('@')[0]);
+    }
+
     setPhone('010-1234-5678'); // 더미 데이터
+    // 저장된 프로필 이미지 불러오기
+    const savedImage = localStorage.getItem('profileImage');
+    if (savedImage) {
+      setProfileImage(savedImage);
+    }
   }, []);
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert('이미지 크기는 5MB 이하여야 합니다.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const result = reader.result as string;
+        setProfileImage(result);
+        localStorage.setItem('profileImage', result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleRemoveImage = () => {
+    setProfileImage(null);
+    localStorage.removeItem('profileImage');
+  };
 
   const handleUpdateProfile = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,6 +79,9 @@ const MyProfile: React.FC = () => {
       alert('비밀번호는 8자 이상이어야 합니다.');
       return;
     }
+
+    // 이름을 localStorage에 저장
+    localStorage.setItem('userName', userName);
 
     alert('회원 정보가 업데이트되었습니다.');
     setNewPassword('');
@@ -73,6 +117,45 @@ const MyProfile: React.FC = () => {
       {/* 개인 정보 수정 */}
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>개인 정보 수정</h3>
+
+        {/* 프로필 이미지 */}
+        <div className={styles.profileImageSection}>
+          <div className={styles.profileImageWrapper} onClick={handleImageClick}>
+            {profileImage ? (
+              <img src={profileImage} alt="프로필" className={styles.profileImage} />
+            ) : (
+              <svg className={styles.defaultProfileIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+              </svg>
+            )}
+            <div className={styles.imageOverlay}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                <circle cx="12" cy="13" r="4" />
+              </svg>
+            </div>
+          </div>
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleImageUpload}
+            accept="image/*"
+            className={styles.fileInput}
+          />
+          <div className={styles.imageButtons}>
+            <button type="button" className={styles.imageBtn} onClick={handleImageClick}>
+              이미지 변경
+            </button>
+            {profileImage && (
+              <button type="button" className={styles.imageRemoveBtn} onClick={handleRemoveImage}>
+                삭제
+              </button>
+            )}
+          </div>
+          <span className={styles.imageHelperText}>5MB 이하의 이미지 파일을 업로드하세요</span>
+        </div>
+
         <form className={styles.form} onSubmit={handleUpdateProfile}>
           <div className={styles.inputGroup}>
             <label className={styles.label}>이메일</label>

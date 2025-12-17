@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './CoursesPage.module.css';
 
@@ -21,8 +21,18 @@ interface Course {
   hash: string;
 }
 
+const VISIBLE_STOPS_COUNT = 2;
+
 const CoursesPage: React.FC = () => {
   const location = useLocation();
+  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+
+  const toggleCard = (courseId: number) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [courseId]: !prev[courseId]
+    }));
+  };
 
   const courses: Course[] = [
     {
@@ -158,7 +168,10 @@ const CoursesPage: React.FC = () => {
                   주요 경유지
                 </h4>
                 <div className={styles.stopsList}>
-                  {course.stops.map((stop, index) => (
+                  {(expandedCards[course.id]
+                    ? course.stops
+                    : course.stops.slice(0, VISIBLE_STOPS_COUNT)
+                  ).map((stop, index) => (
                     <div key={index} className={styles.stopItem}>
                       <div className={styles.stopNumber}>{index + 1}</div>
                       <div className={styles.stopInfo}>
@@ -167,10 +180,31 @@ const CoursesPage: React.FC = () => {
                           {stop.description}
                         </div>
                       </div>
-                      <div className={styles.stopEmoji}>{stop.emoji}</div>
                     </div>
                   ))}
                 </div>
+                {course.stops.length > VISIBLE_STOPS_COUNT && (
+                  <button
+                    className={styles.toggleButton}
+                    onClick={() => toggleCard(course.id)}
+                  >
+                    {expandedCards[course.id] ? (
+                      <>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                        접기
+                      </>
+                    ) : (
+                      <>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        더보기 ({course.stops.length - VISIBLE_STOPS_COUNT}개 더)
+                      </>
+                    )}
+                  </button>
+                )}
               </div>
             </div>
           </div>

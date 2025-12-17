@@ -69,10 +69,10 @@ const SupportPage: React.FC = () => {
 
   const filteredFaqs = searchQuery
     ? faqs.filter(
-        (faq) =>
-          faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      (faq) =>
+        faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+    )
     : faqs;
 
   return (
@@ -100,22 +100,32 @@ const SupportPage: React.FC = () => {
       <div className={styles.content}>
         <div className={styles.contactSection}>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>📞</span>
+            <svg className={styles.sectionIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
             문의하기
           </h2>
           <div className={styles.contactGrid}>
             <div className={styles.contactCard}>
-              <div className={styles.contactIcon}>☎️</div>
+              <svg className={styles.contactIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
               <h3 className={styles.contactTitle}>전화 문의</h3>
               <p className={styles.contactInfo}>02-450-9311<br />평일 09:00 - 18:00</p>
             </div>
             <div className={styles.contactCard}>
-              <div className={styles.contactIcon}>✉️</div>
+              <svg className={styles.contactIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
               <h3 className={styles.contactTitle}>이메일 문의</h3>
               <p className={styles.contactInfo}>info@childrenpark.or.kr<br />24시간 접수</p>
             </div>
             <div className={styles.contactCard}>
-              <div className={styles.contactIcon}>📍</div>
+              <svg className={styles.contactIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
               <h3 className={styles.contactTitle}>방문 문의</h3>
               <p className={styles.contactInfo}>서울시 광진구<br />능동로 216</p>
             </div>
@@ -124,16 +134,19 @@ const SupportPage: React.FC = () => {
 
         <div className={styles.faqSection}>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>❓</span>
+            <svg className={styles.sectionIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
             자주 묻는 질문
           </h2>
           <div className={styles.faqList}>
             {filteredFaqs.map((faq) => (
               <div
                 key={faq.id}
-                className={`${styles.faqItem} ${
-                  openFaqId === faq.id ? styles.open : ''
-                }`}
+                className={`${styles.faqItem} ${openFaqId === faq.id ? styles.open : ''
+                  }`}
               >
                 <div
                   className={styles.faqQuestion}

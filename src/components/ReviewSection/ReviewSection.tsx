@@ -57,7 +57,7 @@ const ReviewSection: React.FC = () => {
     },
   ];
 
-  const cardsPerView = 3;
+  const cardsPerView = 4;
   const maxIndex = Math.ceil(reviews.length / cardsPerView) - 1;
 
   const nextReview = () => {
@@ -112,18 +112,17 @@ const ReviewSection: React.FC = () => {
                 <div className={styles.cardContent}>
                   <div className={styles.userInfo}>
                     <span className={styles.userId}>{review.userId}</span>
-                    <span className={styles.period}>
-                      {new Date().toLocaleDateString('ko-KR', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      }).replace(/\. /g, '.').replace(/\.$/, '')}
-                    </span>
                   </div>
                   <div className={styles.rating}>
                     {'⭐'.repeat(review.rating)}
                   </div>
-                  <p className={styles.comment}>{review.comment}</p>
+                  <span className={styles.period}>
+                    {new Date().toLocaleDateString('ko-KR', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    }).replace(/\. /g, '.').replace(/\.$/, '')}
+                  </span>
                 </div>
               </div>
             ))}
@@ -146,9 +145,8 @@ const ReviewSection: React.FC = () => {
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}
-              className={`${styles.indicator} ${
-                index === currentIndex ? styles.activeIndicator : ''
-              }`}
+              className={`${styles.indicator} ${index === currentIndex ? styles.activeIndicator : ''
+                }`}
               onClick={() => setCurrentIndex(index)}
             />
           ))}

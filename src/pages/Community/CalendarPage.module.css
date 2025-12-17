@@ -3,6 +3,7 @@
   max-width: 1400px;
   margin: 0 auto;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .title {
@@ -74,15 +75,18 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 40px;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .calendarSection {
   background: white;
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
 .calendarHeader {
@@ -221,6 +225,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -330,13 +335,16 @@
 }
 
 @media (max-width: 768px) {
+
   /* COMMAND 3: 이벤트 일정 페이지 가로 스크롤 재조정 */
   .container {
     /* 🚨 너비 제어를 다시 한번 강제 */
     width: 100%;
     max-width: 100%;
-    padding: 100px 0 60px 0; /* 불필요한 패딩이 너비를 늘릴 수 있으므로 좌우 패딩 제거 */
-    overflow-x: hidden; /* 가로 스크롤을 최종적으로 숨김 */
+    padding: 100px 0 60px 0;
+    /* 불필요한 패딩이 너비를 늘릴 수 있으므로 좌우 패딩 제거 */
+    overflow-x: hidden;
+    /* 가로 스크롤을 최종적으로 숨김 */
   }
 
   .title {
@@ -349,8 +357,10 @@
 
   .searchSection {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 16px;
+    width: 95%;
+    margin: 0 auto 24px auto;
   }
 
   .searchInput {
@@ -364,6 +374,7 @@
   .calendarSection,
   .upcomingEvents {
     padding: 24px;
+    margin-top: 24px;
   }
 
   .currentMonth {
@@ -374,17 +385,21 @@
   .calendarGrid {
     gap: 4px;
     width: 100%;
-    display: grid; /* 그리드 유지 */
-    overflow-x: auto; /* 캘린더 내부만 수평 스크롤 허용 */
+    display: grid;
+    /* 그리드 유지 */
+    overflow-x: auto;
+    /* 캘린더 내부만 수평 스크롤 허용 */
     -webkit-overflow-scrolling: touch;
   }
 
   .calendarSection,
   .eventDetails {
     /* 캘린더 섹션 너비 제어 */
-    width: 100%;
+    width: 95%;
     max-width: 100%;
-    padding: 16px; /* 좌우 패딩 최소화 */
+    padding: 16px;
+    margin: 0 auto;
+    /* 좌우 여백 동일하게 */
   }
 
   .dayHeader {
@@ -393,7 +408,7 @@
   }
 
   .dayCell {
-    padding: 8px;
+    padding: 5px;
   }
 
   .dayNumber {
