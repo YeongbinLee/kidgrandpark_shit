@@ -225,7 +225,7 @@
   }
 
   .reviewCarousel {
-    gap: 16px;
+    gap: 8px;
   }
 
   /* R 2: 콘텐츠 2열 레이아웃 */
@@ -239,10 +239,10 @@
   /* R 1.1: 터치 영역 확보 */
   .prevBtn,
   .nextBtn {
-    min-width: 44px;
-    min-height: 44px;
-    width: 44px;
-    height: 44px;
+    min-width: 32px;
+    min-height: 32px;
+    width: 32px;
+    height: 32px;
   }
 
   .cardContent {

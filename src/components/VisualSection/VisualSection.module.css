@@ -60,11 +60,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.5) 100%);
 }
 
 /* 콘텐츠 영역 */
@@ -92,6 +90,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -234,12 +233,19 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
+
   40% {
     transform: translateX(-50%) translateY(-10px);
   }
+
   60% {
     transform: translateX(-50%) translateY(-5px);
   }
@@ -327,10 +333,11 @@
     /* 모바일에서 absolute positioning 제거 */
     position: static;
     font-size: 32px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     /* 텍스트 가독성을 위한 스타일 조정 */
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 그림자 추가 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* 그림자 추가 */
     /* R 4.2: 단어 단위 줄바꿈 */
     word-break: keep-all;
     overflow-wrap: break-word;
@@ -341,7 +348,7 @@
     position: static;
     /* R 4.1: 본문 폰트 16px */
     font-size: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
     /* 텍스트 가독성을 위한 스타일 조정 */
     color: #ffffff;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
@@ -358,6 +365,7 @@
     min-height: 44px;
     padding: 12px 32px;
     font-size: 14px;
+    margin-bottom: 60px;
   }
 
   /* R 1.1: 네비게이션 버튼 터치 영역 확보 */
@@ -378,18 +386,19 @@
 
   /* COMMAND 1-2: 비주얼 인디케이터 바 크기 축소 및 좌측 배치 */
   .indicators {
-    bottom: 60px;
+    bottom: 70px;
     left: 16px;
-    transform: translateX(0); /* 기존 translateX(-50%) 제거 */
+    transform: translateX(0);
+    /* 기존 translateX(-50%) 제거 */
     gap: 4px;
   }
 
   /* R 1.1: 인디케이터 터치 영역 (크기 축소) */
   .indicator {
-    min-width: 32px;
-    min-height: 32px;
-    width: 32px;
-    height: 32px;
+    min-width: 16px;
+    min-height: 16px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -399,8 +408,8 @@
   .indicator::before {
     content: '';
     /* 🚨 크기 축소: 8px → 6px */
-    width: 6px;
-    height: 3px;
+    width: 0px;
+    height: 0px;
     border-radius: 2px;
     background: rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.6);
@@ -416,7 +425,7 @@
   }
 
   .scrollIndicator {
-    bottom: 30px;
+    bottom: 60px;
   }
 
   .scrollText {
