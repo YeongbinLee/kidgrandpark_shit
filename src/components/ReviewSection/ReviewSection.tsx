@@ -57,7 +57,7 @@ const ReviewSection: React.FC = () => {
     },
   ];
 
-  const cardsPerView = 4;
+  const cardsPerView = 3;
   const maxIndex = Math.ceil(reviews.length / cardsPerView) - 1;
 
   const nextReview = () => {

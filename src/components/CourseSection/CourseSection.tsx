@@ -78,7 +78,7 @@ const CourseSection: React.FC = () => {
                 <h3 className={styles.courseTitle}>{course.title}</h3>
                 <p className={styles.courseDescription}>{course.description}</p>
                 <div className={styles.tags}>
-                  {course.tags.slice(0, 2).map((tag, index) => (
+                  {course.tags.map((tag, index) => (
                     <span key={index} className={styles.tag}>
                       {tag}
                     </span>
