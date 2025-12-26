@@ -1,11 +1,99 @@
 /* 전역 CSS 리셋 및 기본 스타일 */
 :root {
-  --primary-color: #3A45AD;
-  --text-color: #333;
-  --background-color: #ffffff;
-  --gray-light: #f8f9fa;
-  --gray-medium: #e0e0e0;
-  --gray-dark: #666;
+  /* ===== COLORS ===== */
+  /* Brand Colors */
+  --color-primary: #3A45AD;
+  --color-primary-light: #5A67D8;
+  --color-primary-dark: #2E3795;
+
+  /* Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #F8F9FF;
+
+  /* Text Colors */
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #999999;
+  --color-text-inverse: #ffffff;
+
+  /* Border Colors */
+  --color-border-light: #f0f0f0;
+  --color-border-medium: #e0e0e0;
+  --color-border-dark: #cccccc;
+
+  /* Semantic Colors */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  /* Legacy aliases (for backward compatibility) */
+  --primary-color: var(--color-primary);
+  --text-color: var(--color-text-primary);
+  --background-color: var(--color-bg-primary);
+  --gray-light: var(--color-bg-secondary);
+  --gray-medium: var(--color-border-medium);
+  --gray-dark: var(--color-text-secondary);
+
+  /* ===== SPACING (4px unit) ===== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ===== TYPOGRAPHY ===== */
+  /* Font Sizes */
+  --font-h1: 48px;
+  --font-h2: 32px;
+  --font-h3: 24px;
+  --font-body: 16px;
+  --font-small: 14px;
+  --font-xs: 12px;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.5px;
+
+  /* ===== RADIUS ===== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* ===== SHADOWS ===== */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+
+  /* ===== LAYOUT ===== */
+  --header-height-desktop: 80px;
+  --header-height-mobile: 56px;
+  --max-width-content: 1400px;
+  --max-width-narrow: 1200px;
 }
 
 * {
@@ -15,11 +103,13 @@
 }
 
 /* COMMAND 1: 스크롤 오류 해결 */
-html, body {
+html,
+body {
   /* 🚨 높이 강제 설정이나 넘침 방지 설정 제거하여 기본 스크롤 동작 복구 */
   height: auto;
   overflow: auto;
-  -webkit-overflow-scrolling: touch; /* iOS 스크롤 성능 최적화 */
+  -webkit-overflow-scrolling: touch;
+  /* iOS 스크롤 성능 최적화 */
   width: 100%;
 }
 
@@ -48,7 +138,12 @@ body {
   word-wrap: break-word;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   font-weight: 700;
   line-height: 1.2;
@@ -63,7 +158,8 @@ a {
   text-decoration: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -82,13 +178,16 @@ button {
   outline: none;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   font-family: inherit;
 }
 
 /* 스크롤바 스타일링 */
 ::-webkit-scrollbar {
-  height: 8px; /* Adjust for horizontal scrollbar */
+  height: 8px;
+  /* Adjust for horizontal scrollbar */
   width: 8px;
 }
 
